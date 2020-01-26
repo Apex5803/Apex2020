@@ -58,7 +58,11 @@ dependencies {
     nativeDesktopZip wpi.deps.vendor.jni(wpi.platforms.desktop)
 
     testImplementation 'junit:junit:4.12'
-    compile 'com.github.FRCTeam2910.Common:robot:6456e9c82e'
+
+
+    //id of 2910's common code; number at end is first 10 digits of specific commit id used. 
+    //this will need to be updated as new features come out
+    compile 'com.github.FRCTeam2910.Common:robot:942637bdfd'
     // Enable simulation gui support. Must check the box in vscode to enable support
     // upon debugging
     simulation wpi.deps.sim.gui(wpi.platforms.desktop, false)
