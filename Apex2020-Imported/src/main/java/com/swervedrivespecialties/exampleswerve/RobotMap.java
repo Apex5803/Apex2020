@@ -30,4 +30,14 @@ public class RobotMap {
     public static final int Tunnel1 = 11;
     public static final int TunnelPiston_ForwardChannel =  2;
     public static final int TunnelPiston_ReverseChannel = 3;
+
+
+    public static final int Elevator1 = 9;
+    public static final int ElevatorRotator_ForwardChannel = 4;
+    public static final int ElevatorRotator_ReverseChannel = 5;
+
+
+    public static final int Wheel1 = 12;
+    public static final int WheelExtender_ForwardChannel = 6;
+    public static final int WheelExtender_ReverseChannel = 7;
 }
