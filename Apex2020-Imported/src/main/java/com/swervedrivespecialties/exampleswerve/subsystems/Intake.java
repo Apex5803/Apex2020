@@ -19,6 +19,7 @@ public class Intake extends SubsystemBase {
   /**
    * Creates a new Intake.
    */
+  private static Intake instance;
   TalonSRX Intake1 = new TalonSRX(RobotMap.Intake1);
   DoubleSolenoid IntakeExtender = new DoubleSolenoid(RobotMap.IntakeExtender_ForwardChannel, RobotMap.IntakeExtender_ReverseChannel);
   public Intake() {
@@ -41,4 +42,12 @@ public class Intake extends SubsystemBase {
   public void periodic() {
     // This method will be called once per scheduler run
   }
+
+  public static Intake getInstance() {
+    if (instance == null) {
+        instance = new Intake();
+    }
+
+    return instance;
+}
 }
