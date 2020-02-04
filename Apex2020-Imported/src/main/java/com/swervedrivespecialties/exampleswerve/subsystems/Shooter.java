@@ -11,7 +11,7 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
-import com.swervedrivespecialties.exampleswerve.PIDValues;
+import com.swervedrivespecialties.exampleswerve.ConfigValues;
 import com.swervedrivespecialties.exampleswerve.RobotMap;
 import com.ctre.phoenix.motorcontrol.can.TalonSRXConfiguration;
 import com.ctre.phoenix.motorcontrol.can.VictorSPXConfiguration;
@@ -30,10 +30,10 @@ public class Shooter extends SubsystemBase {
   public Shooter() {
     Shooter1.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative);
     Shooter2.follow(Shooter1);
-    Shooter1.config_kP(0, PIDValues.Shooter_P);
-    Shooter1.config_kI(0, PIDValues.Shooter_I);
-    Shooter1.config_kD(0, PIDValues.Shooter_D);
-    Shooter1.config_kF(0, PIDValues.Shooter_F);
+    Shooter1.config_kP(0, ConfigValues.Shooter_P);
+    Shooter1.config_kI(0, ConfigValues.Shooter_I);
+    Shooter1.config_kD(0, ConfigValues.Shooter_D);
+    Shooter1.config_kF(0, ConfigValues.Shooter_F);
     
     
 

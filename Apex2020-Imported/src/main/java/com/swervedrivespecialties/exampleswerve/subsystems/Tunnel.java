@@ -10,7 +10,7 @@ package com.swervedrivespecialties.exampleswerve.subsystems;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
-import com.swervedrivespecialties.exampleswerve.PIDValues;
+import com.swervedrivespecialties.exampleswerve.ConfigValues;
 import com.swervedrivespecialties.exampleswerve.RobotMap;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
@@ -31,10 +31,10 @@ public class Tunnel extends SubsystemBase {
 
     //uncomment following section if we switch to PID control for the tunnel
     // Tunnel1.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative);
-    // Tunnel1.config_kP(0, PIDValues.Tunnel_P);
-    // Tunnel1.config_kI(0, PIDValues.Tunnel_I);
-    // Tunnel1.config_kD(0, PIDValues.Tunnel_D);
-    // Tunnel1.config_kF(0, PIDValues.Tunnel_F);
+    // Tunnel1.config_kP(0, ConfigValues.Tunnel_P);
+    // Tunnel1.config_kI(0, PIDVConfigValuesalues.Tunnel_I);
+    // Tunnel1.config_kD(0, ConfigValues.Tunnel_D);
+    // Tunnel1.config_kF(0, ConfigValues.Tunnel_F);
   }
 
 public void runTunnel(ControlMode controlmode, double speed){
