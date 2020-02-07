@@ -9,6 +9,7 @@ package com.swervedrivespecialties.exampleswerve.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
+import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.swervedrivespecialties.exampleswerve.ConfigValues;
 import com.swervedrivespecialties.exampleswerve.RobotMap;
@@ -35,6 +36,7 @@ public class Tunnel extends SubsystemBase {
     // Tunnel1.config_kI(0, PIDVConfigValuesalues.Tunnel_I);
     // Tunnel1.config_kD(0, ConfigValues.Tunnel_D);
     // Tunnel1.config_kF(0, ConfigValues.Tunnel_F);
+    Tunnel1.setNeutralMode(NeutralMode.Brake);
   }
 
 public void runTunnel(ControlMode controlmode, double speed){

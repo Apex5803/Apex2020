@@ -1,6 +1,7 @@
 package com.swervedrivespecialties.exampleswerve;
 
 import com.swervedrivespecialties.exampleswerve.subsystems.*;
+import com.swervedrivespecialties.exampleswerve.utils.ColorChangeCounter;
 import com.swervedrivespecialties.exampleswerve.utils.GameData;
 
 import edu.wpi.first.wpilibj.TimedRobot;
@@ -18,6 +19,7 @@ public class Robot extends TimedRobot {
     public static Elevator elevator;
     public static GameData gameData;
     public static ColorWheel colorWheel;
+    public static ColorChangeCounter colorChangeCounter;
 
     public static OI getOi() {
         return oi;
@@ -32,7 +34,9 @@ public class Robot extends TimedRobot {
         tunnel = Tunnel.getInstance();
         elevator = Elevator.getInstance();
         gameData = GameData.getInstance();
+        colorChangeCounter = ColorChangeCounter.getInstance();
         colorWheel = ColorWheel.getInstance();
+        
     }
 
     @Override
