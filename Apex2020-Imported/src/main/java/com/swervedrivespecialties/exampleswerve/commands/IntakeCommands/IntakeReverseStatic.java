@@ -5,18 +5,18 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package com.swervedrivespecialties.exampleswerve.commands;
+package com.swervedrivespecialties.exampleswerve.commands.IntakeCommands;
+
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.swervedrivespecialties.exampleswerve.Robot;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
-import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.swervedrivespecialties.exampleswerve.*;
-
-public class TunnelForward extends CommandBase {
+public class IntakeReverseStatic extends CommandBase {
   /**
-   * Creates a new TunnelForward.
+   * Creates a new IntakeReverseStatic.
    */
-  public TunnelForward() {
+  public IntakeReverseStatic() {
     // Use addRequirements() here to declare subsystem dependencies.
   }
 
@@ -28,13 +28,13 @@ public class TunnelForward extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    Robot.tunnel.runTunnel(ControlMode.PercentOutput, .25);
+    Robot.intake.RollIntake(ControlMode.PercentOutput, -0.4);
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    Robot.tunnel.runTunnel(ControlMode.PercentOutput, .25);
+    Robot.intake.RollIntake(ControlMode.PercentOutput, 0.0);
   }
 
   // Returns true when the command should end.

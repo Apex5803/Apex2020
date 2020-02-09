@@ -5,7 +5,7 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package com.swervedrivespecialties.exampleswerve.commands;
+package com.swervedrivespecialties.exampleswerve.commands.IntakeCommands;
 
 import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj2.command.CommandBase;
@@ -14,14 +14,14 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.swervedrivespecialties.exampleswerve.*;
 import com.swervedrivespecialties.exampleswerve.subsystems.*;
 
-public class IntakeInVariable extends CommandBase {
+public class IntakeForwardVariable extends CommandBase {
 
 
   // Intake Intake = RobotMap.intake;
   /**
    * Creates a new IntakeIn.
    */
-  public IntakeInVariable() {
+  public IntakeForwardVariable() {
     // Use addRequirements() here to declare subsystem dependencies.
   }
 

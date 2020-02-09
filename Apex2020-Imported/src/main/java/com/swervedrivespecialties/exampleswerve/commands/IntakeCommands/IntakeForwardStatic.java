@@ -5,19 +5,18 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package com.swervedrivespecialties.exampleswerve.commands;
-
-import edu.wpi.first.wpilibj.GenericHID.Hand;
-import edu.wpi.first.wpilibj2.command.CommandBase;
+package com.swervedrivespecialties.exampleswerve.commands.IntakeCommands;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.swervedrivespecialties.exampleswerve.*;
-import com.swervedrivespecialties.exampleswerve.subsystems.*;
-public class IntakeSpitVariable extends CommandBase {
+import com.swervedrivespecialties.exampleswerve.Robot;
+
+import edu.wpi.first.wpilibj2.command.CommandBase;
+
+public class IntakeForwardStatic extends CommandBase {
   /**
-   * Creates a new IntakeSpitVariable.
+   * Creates a new IntakeForwardStatic.
    */
-  public IntakeSpitVariable() {
+  public IntakeForwardStatic() {
     // Use addRequirements() here to declare subsystem dependencies.
   }
 
@@ -29,14 +28,13 @@ public class IntakeSpitVariable extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    Robot.intake.RollIntake(ControlMode.PercentOutput, -0.5 * Robot.oi.getXbox2().getTriggerAxis(Hand.kRight));
-
+    Robot.intake.RollIntake(ControlMode.PercentOutput, 0.4);
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    Robot.intake.RollIntake(ControlMode.PercentOutput, 0);
+    Robot.intake.RollIntake(ControlMode.PercentOutput, 0.0);
   }
 
   // Returns true when the command should end.

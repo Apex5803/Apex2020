@@ -1,4 +1,4 @@
-package com.swervedrivespecialties.exampleswerve.commands;
+package com.swervedrivespecialties.exampleswerve.commands.DriveTrainCommands;
 
 import com.swervedrivespecialties.exampleswerve.Robot;
 import com.swervedrivespecialties.exampleswerve.subsystems.DrivetrainSubsystem;

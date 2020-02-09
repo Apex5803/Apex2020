@@ -27,7 +27,6 @@ public class GameData {
         }
         else return "N";
     }
-
     public static GameData getInstance() {
         if (instance == null) {
             instance = new GameData();

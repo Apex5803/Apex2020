@@ -16,6 +16,8 @@ import com.swervedrivespecialties.exampleswerve.RobotMap;
 import com.ctre.phoenix.motorcontrol.can.TalonSRXConfiguration;
 import com.ctre.phoenix.motorcontrol.can.VictorSPXConfiguration;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Shooter extends SubsystemBase {
@@ -25,6 +27,7 @@ public class Shooter extends SubsystemBase {
   private static Shooter instance;
   TalonSRX Shooter1 = new TalonSRX(RobotMap.Shooter1);
   VictorSPX Shooter2 = new VictorSPX(RobotMap.Shooter2);
+  DoubleSolenoid ShooterHood = new DoubleSolenoid(RobotMap.ShooterHood_ForwardChannel, RobotMap.ShooterHood_ReverseChannel);
   
  
   public Shooter() {
@@ -50,6 +53,13 @@ Shooter1.set(ControlMode.Velocity, Ticks_Per_100_MS);
   
 }
 
+public void ExtendHood(){
+  ShooterHood.set(Value.kForward);
+}
+
+public void RetractHood(){
+  ShooterHood.set(Value.kReverse);
+}
 
 
   public static Shooter getInstance() {

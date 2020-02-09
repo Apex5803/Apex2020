@@ -5,35 +5,34 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package com.swervedrivespecialties.exampleswerve.commands;
+package com.swervedrivespecialties.exampleswerve.commands.ShooterCommands;
+
+import com.swervedrivespecialties.exampleswerve.Robot;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import com.swervedrivespecialties.exampleswerve.*;
-import com.swervedrivespecialties.exampleswerve.subsystems.*;
 
-public class ExtendIntake extends CommandBase {
+public class ExtendHood extends CommandBase {
   /**
-   * Creates a new ExtendIntake.
+   * Creates a new ExtendHood.
    */
-  public ExtendIntake() {
+  public ExtendHood() {
     // Use addRequirements() here to declare subsystem dependencies.
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
+    Robot.shooter.ExtendHood();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    Robot.intake.ExtendIntake();
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    Robot.intake.RetractIntake();
   }
 
   // Returns true when the command should end.

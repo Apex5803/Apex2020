@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.DriverStation;
 public class Robot extends TimedRobot {
     public static OI oi;
 
-    private static DrivetrainSubsystem drivetrain;
+    public static DrivetrainSubsystem drivetrain;
     public static Intake intake;
     public static Shooter shooter;
     public static Tunnel tunnel;
@@ -20,6 +20,7 @@ public class Robot extends TimedRobot {
     public static GameData gameData;
     public static ColorWheel colorWheel;
     public static ColorChangeCounter colorChangeCounter;
+    public static Limelight limelight;
 
     public static OI getOi() {
         return oi;
@@ -36,6 +37,7 @@ public class Robot extends TimedRobot {
         gameData = GameData.getInstance();
         colorChangeCounter = ColorChangeCounter.getInstance();
         colorWheel = ColorWheel.getInstance();
+        limelight = Limelight.getInstance();
         
     }
 

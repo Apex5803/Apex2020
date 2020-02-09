@@ -5,7 +5,8 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 // import com.revrobotics.CANSparkMax;
 // import com.revrobotics.CANSparkMaxLowLevel;
 import com.swervedrivespecialties.exampleswerve.RobotMap;
-import com.swervedrivespecialties.exampleswerve.commands.DriveCommand;
+import com.swervedrivespecialties.exampleswerve.commands.DriveTrainCommands.DriveCommand;
+
 import edu.wpi.first.wpilibj.AnalogInput;
 // import edu.wpi.first.wpilibj.PWMTalonSRX;
 import edu.wpi.first.wpilibj.SPI;

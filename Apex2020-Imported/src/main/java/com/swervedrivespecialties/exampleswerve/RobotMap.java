@@ -20,24 +20,26 @@ public class RobotMap {
 
     public static final int Intake1 = 10; //CAN
     public static final int IntakeExtender_ForwardChannel = 0; //PCM
-    public static final int IntakeExtender_ReverseChannel = 1;
+    public static final int IntakeExtender_ReverseChannel = 1; //PCM
 
 
     public static final int Shooter1 = 13; //CAN
-    public static final int Shooter2 = 1;
+    public static final int Shooter2 = 1;// CAN
+    public static final int ShooterHood_ForwardChannel = 8;
+    public static final int ShooterHood_ReverseChannel = 9;
 
 
-    public static final int Tunnel1 = 11;
-    public static final int TunnelPiston_ForwardChannel =  2;
-    public static final int TunnelPiston_ReverseChannel = 3;
+    public static final int Tunnel1 = 11;// CAN
+    public static final int TunnelPiston_ForwardChannel =  2; //PCM
+    public static final int TunnelPiston_ReverseChannel = 3; //PCM
 
 
-    public static final int Elevator1 = 9;
-    public static final int ElevatorRotator_ForwardChannel = 4;
-    public static final int ElevatorRotator_ReverseChannel = 5;
+    public static final int Elevator1 = 9;// CAN
+    public static final int ElevatorRotator_ForwardChannel = 4; //PCM
+    public static final int ElevatorRotator_ReverseChannel = 5; //PCM
 
 
-    public static final int Wheel1 = 12;
-    public static final int WheelExtender_ForwardChannel = 6;
-    public static final int WheelExtender_ReverseChannel = 7;
+    public static final int Wheel1 = 12;// CAN
+    public static final int WheelExtender_ForwardChannel = 6; //PCM
+    public static final int WheelExtender_ReverseChannel = 7; //PCM
 }
