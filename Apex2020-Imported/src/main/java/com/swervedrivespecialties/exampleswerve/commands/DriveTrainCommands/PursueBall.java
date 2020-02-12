@@ -5,36 +5,38 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package com.swervedrivespecialties.exampleswerve.commands.IntakeCommands;
+package com.swervedrivespecialties.exampleswerve.commands.DriveTrainCommands;
 
+import com.swervedrivespecialties.exampleswerve.ConfigValues;
+import com.swervedrivespecialties.exampleswerve.Robot;
+
+import edu.wpi.first.wpilibj.geometry.Translation2d;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import com.swervedrivespecialties.exampleswerve.*;
 
 
-public class ExtendIntake extends CommandBase {
+public class PursueBall extends CommandBase {
   /**
-   * Creates a new ExtendIntake.
+   * Creates a new PursueBall.
    */
-  public ExtendIntake() {
+  public PursueBall() {
     // Use addRequirements() here to declare subsystem dependencies.
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    Robot.intake.ExtendIntake();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-   
+Robot.drivetrain.drive(new Translation2d((1/(Robot.pixyCam.getTargetHeight() * ConfigValues.pixyTargetScaleModifier)), 0),
+                   Robot.pixyCam.getProportionalX(), false);
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    Robot.intake.RetractIntake();
   }
 
   // Returns true when the command should end.

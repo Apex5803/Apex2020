@@ -6,7 +6,7 @@ import com.swervedrivespecialties.exampleswerve.utils.GameData;
 
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.DriverStation;
+// import edu.wpi.first.wpilibj.DriverStation;
 
 
 public class Robot extends TimedRobot {
@@ -21,6 +21,7 @@ public class Robot extends TimedRobot {
     public static ColorWheel colorWheel;
     public static ColorChangeCounter colorChangeCounter;
     public static Limelight limelight;
+    public static PixyCam pixyCam;
 
     public static OI getOi() {
         return oi;
@@ -38,6 +39,7 @@ public class Robot extends TimedRobot {
         colorChangeCounter = ColorChangeCounter.getInstance();
         colorWheel = ColorWheel.getInstance();
         limelight = Limelight.getInstance();
+        pixyCam = PixyCam.getInstance();
         
     }
 

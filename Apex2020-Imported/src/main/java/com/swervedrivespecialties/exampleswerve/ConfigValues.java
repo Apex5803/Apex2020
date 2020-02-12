@@ -27,5 +27,10 @@ public class ConfigValues{
 
     public static double Spinner_Peak_Output = 1;
 
+    public static double Shooter_Test_Speed = 3900;
+
+    public static int colorWheelRPMS = 30;
+
+    public static double pixyTargetScaleModifier = 2.0;
 
 }

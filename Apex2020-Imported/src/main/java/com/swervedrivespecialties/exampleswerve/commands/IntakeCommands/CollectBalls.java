@@ -8,7 +8,8 @@
 package com.swervedrivespecialties.exampleswerve.commands.IntakeCommands;
 
 import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
-import com.swervedrivespecialties.exampleswerve.commands.*;
+import com.swervedrivespecialties.exampleswerve.commands.IntakeCommands.ExtendIntake;
+import com.swervedrivespecialties.exampleswerve.commands.IntakeCommands.IntakeForwardVariable;
 
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
 // information, see:

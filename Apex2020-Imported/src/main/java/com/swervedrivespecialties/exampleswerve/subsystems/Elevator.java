@@ -48,13 +48,13 @@ private static Elevator instance;
     ElevatorRotator.set(Value.kReverse);
   }
 
-  public void moveElevator(int EncoderPosition){
+  public void moveElevatorPosition(int EncoderPosition){
     Elevator1.set(ControlMode.MotionMagic, EncoderPosition);
 
   }
 
-  public void moveElevator(float percentOutput){
-    Elevator1.set(ControlMode.PercentOutput, percentOutput);
+  public void moveElevatorPercent(double PercentOutput){
+    Elevator1.set(ControlMode.PercentOutput, PercentOutput);
   }
 
   public int getElevatorPosition = Elevator1.getSelectedSensorPosition();

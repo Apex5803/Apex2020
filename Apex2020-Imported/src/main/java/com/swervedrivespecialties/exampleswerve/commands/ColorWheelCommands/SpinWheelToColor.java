@@ -5,41 +5,46 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package com.swervedrivespecialties.exampleswerve.commands.IntakeCommands;
+package com.swervedrivespecialties.exampleswerve.commands.ColorWheelCommands;
+
+import com.swervedrivespecialties.exampleswerve.ConfigValues;
+import com.swervedrivespecialties.exampleswerve.Robot;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import com.swervedrivespecialties.exampleswerve.*;
 
-
-public class ExtendIntake extends CommandBase {
+public class SpinWheelToColor extends CommandBase {
   /**
-   * Creates a new ExtendIntake.
+   * Creates a new SpinWheelToColor.
    */
-  public ExtendIntake() {
+  public SpinWheelToColor() {
     // Use addRequirements() here to declare subsystem dependencies.
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    Robot.intake.ExtendIntake();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-   
+    if(Robot.colorWheel.getFieldColorString() != Robot.gameData.getGameData()){
+      Robot.colorWheel.spinWheel(ConfigValues.colorWheelRPMS);
+    }
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    Robot.intake.RetractIntake();
+    Robot.colorWheel.spinWheel(0);
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    if(Robot.colorWheel.getFieldColorString() == Robot.gameData.getGameData()){
+      return true;
+    }
+    else return false;
   }
 }

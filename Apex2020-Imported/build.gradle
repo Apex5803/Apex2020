@@ -6,6 +6,7 @@ allprojects{
     repositories {
         jcenter()
         maven { url "https://jitpack.io" }
+        maven { url 'https://nexus.otake.pw/repository/maven-public/' }
     }
 }
 sourceCompatibility = JavaVersion.VERSION_11
@@ -59,7 +60,7 @@ dependencies {
 
     testImplementation 'junit:junit:4.12'
 
-
+    implementation 'pw.otake.pseudoresonance:pixy2-java-api:1.3.5'
     //id of 2910's common code; number at end is first 10 digits of specific commit id used. 
     //this will need to be updated as new features come out
     compile 'com.github.FRCTeam2910.Common:robot:942637bdfd'

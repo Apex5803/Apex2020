@@ -42,4 +42,6 @@ public class RobotMap {
     public static final int Wheel1 = 12;// CAN
     public static final int WheelExtender_ForwardChannel = 6; //PCM
     public static final int WheelExtender_ReverseChannel = 7; //PCM
+
+    public static final int Pixy2I2C_ID = 1;
 }

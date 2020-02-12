@@ -5,36 +5,37 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package com.swervedrivespecialties.exampleswerve.commands.IntakeCommands;
+package com.swervedrivespecialties.exampleswerve.commands.ElevatorCommands;
+
+import com.swervedrivespecialties.exampleswerve.Robot;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import com.swervedrivespecialties.exampleswerve.*;
 
-
-public class ExtendIntake extends CommandBase {
+public class MoveElevatorPosition extends CommandBase {
   /**
-   * Creates a new ExtendIntake.
+   * Creates a new MoveElevatorPosition.
    */
-  public ExtendIntake() {
+  int goalPosition;
+  public MoveElevatorPosition(int TargetPosition) {
     // Use addRequirements() here to declare subsystem dependencies.
+    this.goalPosition = TargetPosition;
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    Robot.intake.ExtendIntake();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-   
+    Robot.elevator.moveElevatorPosition(goalPosition);
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    Robot.intake.RetractIntake();
+    Robot.elevator.moveElevatorPercent(0.0);
   }
 
   // Returns true when the command should end.
