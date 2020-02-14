@@ -71,11 +71,11 @@ public class DrivetrainSubsystem extends Subsystem {
             new Translation2d(-TRACKWIDTH / 2.0, -WHEELBASE / 2.0)
     );
 
-    private final Gyroscope gyroscope = new NavX(SPI.Port.kMXP);
+    public final Gyroscope gyroscope = new NavX(SPI.Port.kMXP);
 
     public DrivetrainSubsystem() {
-        gyroscope.calibrate();
-        gyroscope.setInverted(true); // You might not need to invert the gyro
+        gyroscope.calibrate();      //TODO set inverted or not as necessary
+        gyroscope.setInverted(true); // You might not need to invert the gyro 
 
         frontLeftModule.setName("Front Left");
         frontRightModule.setName("Front Right");
@@ -130,6 +130,10 @@ public class DrivetrainSubsystem extends Subsystem {
 
     public void resetGyroscope() {
         gyroscope.setAdjustmentAngle(gyroscope.getUnadjustedAngle());
+    }
+
+    public double getRealAngle(){
+        return gyroscope.getUnadjustedAngle().toDegrees();
     }
 
     @Override

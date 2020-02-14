@@ -50,7 +50,10 @@ public class Shooter extends SubsystemBase {
 public void Shoot(double RPMs){
   double Ticks_Per_100_MS = (RPMs * 4096 / 600);
 Shooter1.set(ControlMode.Velocity, Ticks_Per_100_MS);
-  
+}
+
+public void TestShoot(double percent){
+Shooter1.set(ControlMode.PercentOutput, percent);
 }
 
 public void ExtendHood(){

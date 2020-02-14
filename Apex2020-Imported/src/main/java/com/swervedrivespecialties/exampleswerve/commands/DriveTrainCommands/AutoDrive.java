@@ -5,19 +5,29 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package com.swervedrivespecialties.exampleswerve.commands.ShooterCommands;
+package com.swervedrivespecialties.exampleswerve.commands.DriveTrainCommands;
 
-import com.swervedrivespecialties.exampleswerve.ConfigValues;
 import com.swervedrivespecialties.exampleswerve.Robot;
 
+import edu.wpi.first.wpilibj.geometry.Translation2d;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
-public class Shooter_Test extends CommandBase {
+public class AutoDrive extends CommandBase {
   /**
-   * Creates a new Shooter_Test.
+   * Creates a new AutoDrive.
    */
-  public Shooter_Test() {
+  Translation2d translation;
+  double turn;
+  double currentHeading;
+  double deltaAngle;
+  double deltaAnglePostMath;
+  
+  public AutoDrive(Translation2d translation, double turnAngle) {
     // Use addRequirements() here to declare subsystem dependencies.
+    this.translation = translation;
+    this.turn = turnAngle;
+    this.currentHeading = Robot.drivetrain.getRealAngle();
+    this.deltaAngle = turnAngle - currentHeading;
   }
 
   // Called when the command is initially scheduled.
@@ -28,7 +38,15 @@ public class Shooter_Test extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    Robot.shooter.TestShoot(ConfigValues.Shooter_Test_Speed);
+    if (deltaAngle > 180){
+      deltaAnglePostMath = ((deltaAngle - 360)/180);
+    }
+    else if (deltaAngle < -180){
+      deltaAnglePostMath = ((360 + deltaAngle)/180);
+    }
+    else deltaAnglePostMath = (deltaAngle/180);
+
+    Robot.drivetrain.drive(translation, deltaAnglePostMath, true);
   }
 
   // Called once the command ends or is interrupted.
@@ -39,6 +57,7 @@ public class Shooter_Test extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
+
     return false;
   }
 }
