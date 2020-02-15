@@ -5,29 +5,37 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package com.swervedrivespecialties.exampleswerve.commands.ColorWheelCommands;
+package com.swervedrivespecialties.exampleswerve.commands.ElevatorCommands;
 
 import com.swervedrivespecialties.exampleswerve.Robot;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
-public class ExtendColorWheel extends CommandBase {
+public class MoveToColorWheelPosition extends CommandBase {
   /**
    * Creates a new ExtendColorWheel.
    */
-  public ExtendColorWheel() {
+  public MoveToColorWheelPosition() {
     // Use addRequirements() here to declare subsystem dependencies.
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    Robot.colorWheel.extendWheel();
+    if(Robot.elevator.ColorWheelLockExtended == true && Robot.elevator.ElevatorRotatorExtended == true){
+    Robot.elevator.retractColorWheelLock();
+    Robot.elevator.RetractElevator();
+    }
+    else if(Robot.elevator.ElevatorRotatorExtended == true){
+      Robot.elevator.RetractElevator();
+    }
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    Robot.elevator.extendColorWheelLock();
+    Robot.elevator.ExtendElevator();
   }
 
   // Called once the command ends or is interrupted.

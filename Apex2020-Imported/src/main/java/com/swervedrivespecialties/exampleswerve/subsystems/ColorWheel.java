@@ -30,7 +30,7 @@ public class ColorWheel extends SubsystemBase {
    * Creates a new ColorWheel.
    */
   TalonSRX Wheel1 = new TalonSRX(RobotMap.Wheel1);
-    DoubleSolenoid WheelExtender = new DoubleSolenoid(RobotMap.WheelExtender_ForwardChannel, RobotMap.WheelExtender_ReverseChannel);
+    // DoubleSolenoid WheelExtender = new DoubleSolenoid(RobotMap.WheelExtender_ForwardChannel, RobotMap.WheelExtender_ReverseChannel);
     String assignedColor = Robot.gameData.getGameData();
     private final I2C.Port i2cPort = I2C.Port.kOnboard;
     private final ColorSensorV3 m_colorSensor = new ColorSensorV3(i2cPort);
@@ -113,13 +113,6 @@ public class ColorWheel extends SubsystemBase {
   }
   
 
-  public void extendWheel(){
-    WheelExtender.set(Value.kForward);
-  }
-
-  public void retractWheel(){
-    WheelExtender.set(Value.kReverse);
-  }
 
   public void spinWheel(double percentSpeed){
     Wheel1.set(ControlMode.PercentOutput, percentSpeed);

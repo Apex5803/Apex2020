@@ -19,6 +19,7 @@ public class TriggerButton extends Trigger{
     }
 
     public boolean get() {
-        return xbox.getRawAxis(axis) >= .1;
+        return Math.abs(xbox.getRawAxis(axis)) >= .1;
+            
     }
 }

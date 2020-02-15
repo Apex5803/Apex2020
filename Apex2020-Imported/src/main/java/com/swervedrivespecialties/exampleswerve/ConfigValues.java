@@ -1,6 +1,7 @@
 package com.swervedrivespecialties.exampleswerve;
 
 public class ConfigValues{
+    //TODO PID Tuning
     public static double Shooter_P = 0;
     public static double Shooter_I = 0;
     public static double Shooter_D = 0;
@@ -32,5 +33,9 @@ public class ConfigValues{
     public static int colorWheelRPMS = 30;
 
     public static double pixyTargetScaleModifier = 2.0;
+
+    public static double XboxDriverLeftStickDeadband = 0.1;
+    public static int LowestClimbPosition = 500; //TODO Set this value after testing
+
 
 }

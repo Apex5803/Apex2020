@@ -40,28 +40,32 @@ public class DrivetrainSubsystem extends Subsystem {
             .angleEncoder(new AnalogInput(RobotMap.DRIVETRAIN_FRONT_LEFT_ANGLE_ENCODER), FRONT_LEFT_ANGLE_OFFSET)
             .angleMotor(new WPI_TalonSRX(RobotMap.DRIVETRAIN_FRONT_LEFT_ANGLE_MOTOR),
                     Mk2SwerveModuleBuilder.MotorType.MINI_CIM)
-            .driveMotor(new TalonFX(RobotMap.DRIVETRAIN_FRONT_LEFT_DRIVE_MOTOR))
+            .driveMotor(new WPI_TalonSRX(RobotMap.DRIVETRAIN_FRONT_LEFT_DRIVE_MOTOR),
+             Mk2SwerveModuleBuilder.MotorType.MINI_CIM)
             .build();
     private final SwerveModule frontRightModule = new Mk2SwerveModuleBuilder(
             new Vector2(TRACKWIDTH / 2.0, -WHEELBASE / 2.0))
             .angleEncoder(new AnalogInput(RobotMap.DRIVETRAIN_FRONT_RIGHT_ANGLE_ENCODER), FRONT_RIGHT_ANGLE_OFFSET)
             .angleMotor(new WPI_TalonSRX(RobotMap.DRIVETRAIN_FRONT_RIGHT_ANGLE_MOTOR),
                     Mk2SwerveModuleBuilder.MotorType.MINI_CIM)
-            .driveMotor(new TalonFX(RobotMap.DRIVETRAIN_FRONT_RIGHT_DRIVE_MOTOR))
+            .driveMotor(new WPI_TalonSRX(RobotMap.DRIVETRAIN_FRONT_RIGHT_DRIVE_MOTOR), 
+            Mk2SwerveModuleBuilder.MotorType.MINI_CIM)
             .build();
     private final SwerveModule backLeftModule = new Mk2SwerveModuleBuilder(
             new Vector2(-TRACKWIDTH / 2.0, WHEELBASE / 2.0))
             .angleEncoder(new AnalogInput(RobotMap.DRIVETRAIN_BACK_LEFT_ANGLE_ENCODER), BACK_LEFT_ANGLE_OFFSET)
             .angleMotor(new WPI_TalonSRX(RobotMap.DRIVETRAIN_BACK_LEFT_ANGLE_MOTOR),
                     Mk2SwerveModuleBuilder.MotorType.MINI_CIM)
-            .driveMotor(new TalonFX(RobotMap.DRIVETRAIN_BACK_LEFT_DRIVE_MOTOR))
+            .driveMotor(new WPI_TalonSRX(RobotMap.DRIVETRAIN_BACK_LEFT_DRIVE_MOTOR),
+            Mk2SwerveModuleBuilder.MotorType.MINI_CIM)
             .build();
     private final SwerveModule backRightModule = new Mk2SwerveModuleBuilder(
             new Vector2(-TRACKWIDTH / 2.0, -WHEELBASE / 2.0))
             .angleEncoder(new AnalogInput(RobotMap.DRIVETRAIN_BACK_RIGHT_ANGLE_ENCODER), BACK_RIGHT_ANGLE_OFFSET)
             .angleMotor(new WPI_TalonSRX(RobotMap.DRIVETRAIN_BACK_RIGHT_ANGLE_MOTOR),
                     Mk2SwerveModuleBuilder.MotorType.MINI_CIM)
-            .driveMotor(new TalonFX(RobotMap.DRIVETRAIN_BACK_RIGHT_DRIVE_MOTOR))
+            .driveMotor(new WPI_TalonSRX(RobotMap.DRIVETRAIN_BACK_RIGHT_DRIVE_MOTOR),
+            Mk2SwerveModuleBuilder.MotorType.MINI_CIM)
             .build();
 
     private final SwerveDriveKinematics kinematics = new SwerveDriveKinematics(

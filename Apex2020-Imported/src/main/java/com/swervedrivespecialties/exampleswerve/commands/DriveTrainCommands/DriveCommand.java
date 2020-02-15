@@ -1,7 +1,11 @@
 package com.swervedrivespecialties.exampleswerve.commands.DriveTrainCommands;
 
+import com.swervedrivespecialties.exampleswerve.ConfigValues;
 import com.swervedrivespecialties.exampleswerve.Robot;
 import com.swervedrivespecialties.exampleswerve.subsystems.DrivetrainSubsystem;
+import com.swervedrivespecialties.exampleswerve.utils.NumberUtils;
+
+
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.geometry.Translation2d;
 import org.frcteam2910.common.robot.Utilities;
@@ -15,12 +19,14 @@ public class DriveCommand extends Command {
     @Override
     protected void execute() {
         double forward = -Robot.getOi().getXbox1().getRawAxis(1);
-        forward = Utilities.deadband(forward);
+        double strafe = -Robot.getOi().getXbox1().getRawAxis(0);
+
+        forward =  NumberUtils.TwoEntryDeadzoneY(forward, strafe, ConfigValues.XboxDriverLeftStickDeadband );
         // Square the forward stick
         forward = Math.copySign(Math.pow(forward, 2.0), forward);
 
-        double strafe = -Robot.getOi().getXbox1().getRawAxis(0);
-        strafe = Utilities.deadband(strafe);
+        
+        strafe =  NumberUtils.TwoEntryDeadzoneX(forward, strafe, ConfigValues.XboxDriverLeftStickDeadband);
         // Square the strafe stick
         strafe = Math.copySign(Math.pow(strafe, 2.0), strafe);
 

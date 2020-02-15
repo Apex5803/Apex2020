@@ -35,13 +35,20 @@ public class RobotMap {
 
 
     public static final int Elevator1 = 9;// CAN
+    public static final int Elevator2 = 10;// CAN
     public static final int ElevatorRotator_ForwardChannel = 4; //PCM
     public static final int ElevatorRotator_ReverseChannel = 5; //PCM
+    public static final int ElevatorClimbLock_ForwardChannel = 8; //PCM
+    public static final int ElevatorClimbLock_ReverseChannel = 9; //PCM
 
 
     public static final int Wheel1 = 12;// CAN
-    public static final int WheelExtender_ForwardChannel = 6; //PCM
-    public static final int WheelExtender_ReverseChannel = 7; //PCM
+    public static final int ElevatorWheelPositionLock_ForwardChannel = 6; //PCM
+    public static final int ElevatorWheelPositionLock_ReverseChannel = 7; //PCM
 
     public static final int Pixy2I2C_ID = 1;
+
+
+    public static final int PDP1ID = 0;
+    public static final int PDP2ID = 1;
 }

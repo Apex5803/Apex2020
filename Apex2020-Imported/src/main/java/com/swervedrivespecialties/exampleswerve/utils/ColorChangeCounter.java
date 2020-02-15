@@ -30,7 +30,7 @@ public class ColorChangeCounter {
     public int countColors(){
         currentColor = Robot.colorWheel.getRobotColorString();
         if (currentColor != lastColor && currentColor != "N"){
-            deltaColorCount = deltaColorCount + 1;
+            deltaColorCount = Math.incrementExact(deltaColorCount);
         }
 
         if (currentColor == "N"){

@@ -21,7 +21,7 @@ public class Intake extends SubsystemBase {
    */
   private static Intake instance;
   TalonSRX Intake1 = new TalonSRX(RobotMap.Intake1);
-  DoubleSolenoid IntakeExtender = new DoubleSolenoid(RobotMap.IntakeExtender_ForwardChannel, RobotMap.IntakeExtender_ReverseChannel);
+  DoubleSolenoid IntakeExtender = new DoubleSolenoid(RobotMap.PDP1ID, RobotMap.IntakeExtender_ForwardChannel, RobotMap.IntakeExtender_ReverseChannel);
   public Intake() {
 
   }

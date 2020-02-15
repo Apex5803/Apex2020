@@ -27,7 +27,7 @@ public class Shooter extends SubsystemBase {
   private static Shooter instance;
   TalonSRX Shooter1 = new TalonSRX(RobotMap.Shooter1);
   VictorSPX Shooter2 = new VictorSPX(RobotMap.Shooter2);
-  DoubleSolenoid ShooterHood = new DoubleSolenoid(RobotMap.ShooterHood_ForwardChannel, RobotMap.ShooterHood_ReverseChannel);
+  DoubleSolenoid ShooterHood = new DoubleSolenoid(RobotMap.PDP1ID, RobotMap.ShooterHood_ForwardChannel, RobotMap.ShooterHood_ReverseChannel);
   
  
   public Shooter() {

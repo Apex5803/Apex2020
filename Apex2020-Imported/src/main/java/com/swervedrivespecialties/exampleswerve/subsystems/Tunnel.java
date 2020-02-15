@@ -24,7 +24,7 @@ public class Tunnel extends SubsystemBase {
    */
     
    TalonSRX Tunnel1 = new TalonSRX(RobotMap.Tunnel1);
-   DoubleSolenoid TunnelPiston = new DoubleSolenoid(RobotMap.TunnelPiston_ForwardChannel, RobotMap.TunnelPiston_ReverseChannel);
+   DoubleSolenoid TunnelPiston = new DoubleSolenoid(RobotMap.PDP1ID, RobotMap.TunnelPiston_ForwardChannel, RobotMap.TunnelPiston_ReverseChannel);
    private static Tunnel instance;
   
   public Tunnel() {
