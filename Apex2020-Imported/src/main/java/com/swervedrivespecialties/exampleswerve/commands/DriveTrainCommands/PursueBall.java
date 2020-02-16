@@ -10,11 +10,12 @@ package com.swervedrivespecialties.exampleswerve.commands.DriveTrainCommands;
 import com.swervedrivespecialties.exampleswerve.ConfigValues;
 import com.swervedrivespecialties.exampleswerve.Robot;
 
+import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.geometry.Translation2d;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
 
-public class PursueBall extends CommandBase {
+public class PursueBall extends Command {
   /**
    * Creates a new PursueBall.
    */
@@ -36,9 +37,13 @@ Robot.drivetrain.drive(new Translation2d((1/(Robot.pixyCam.getTargetHeight() * C
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {
+  public void end() {
   }
 
+  @Override
+  protected void interrupted() {
+    end();
+  }
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {

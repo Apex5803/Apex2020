@@ -32,6 +32,7 @@ private static Elevator instance;
 public boolean ElevatorRotatorExtended;
 public boolean ColorWheelLockExtended;
 public boolean ClimbLockEngaged;
+public int ButtonPressCount;
 
   public Elevator() {
     Elevator1.config_kP(0, ConfigValues.Elevator_P);
@@ -43,7 +44,8 @@ public boolean ClimbLockEngaged;
     ElevatorRotatorExtended = true;
     ColorWheelLockExtended = true;
     ClimbLockEngaged = false;
-
+    ButtonPressCount = 0;
+    
   }
 
   @Override
@@ -90,7 +92,7 @@ public boolean ClimbLockEngaged;
   }
 
   public void extendElevatorClimbLock(){
-    if(getElevatorPosition > ConfigValues.LowestClimbPosition){
+    if(getElevatorPosition > ConfigValues.LowestClimbPositionLimiting){
     ElevatorClimbLock.set(Value.kForward);
     ClimbLockEngaged = true;
   }

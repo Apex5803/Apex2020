@@ -10,9 +10,10 @@ package com.swervedrivespecialties.exampleswerve.commands.IntakeCommands;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.swervedrivespecialties.exampleswerve.Robot;
 
+import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
-public class IntakeForwardStatic extends CommandBase {
+public class IntakeForwardStatic extends Command {
   /**
    * Creates a new IntakeForwardStatic.
    */
@@ -33,10 +34,13 @@ public class IntakeForwardStatic extends CommandBase {
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {
+  public void end() {
     Robot.intake.RollIntake(ControlMode.PercentOutput, 0.0);
   }
-
+  @Override
+  protected void interrupted() {
+    end();
+  }
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {

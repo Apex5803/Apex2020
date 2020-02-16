@@ -8,12 +8,13 @@
 package com.swervedrivespecialties.exampleswerve.commands.IntakeCommands;
 
 import edu.wpi.first.wpilibj.GenericHID.Hand;
+import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.swervedrivespecialties.exampleswerve.*;
 // import com.swervedrivespecialties.exampleswerve.subsystems.*;
-public class IntakeReverseVariable extends CommandBase {
+public class IntakeReverseVariable extends Command {
   /**
    * Creates a new IntakeSpitVariable.
    */
@@ -35,8 +36,13 @@ public class IntakeReverseVariable extends CommandBase {
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {
+  public void end() {
     Robot.intake.RollIntake(ControlMode.PercentOutput, 0);
+  }
+  
+  @Override
+  protected void interrupted() {
+    end();
   }
 
   // Returns true when the command should end.

@@ -9,9 +9,10 @@ package com.swervedrivespecialties.exampleswerve.commands.ElevatorCommands;
 
 import com.swervedrivespecialties.exampleswerve.Robot;
 
+import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
-public class MoveElevatorPercent extends CommandBase {
+public class MoveElevatorPercent extends Command {
   /**
    * Creates a new MoveElevatorPercent.
    */
@@ -34,8 +35,12 @@ public class MoveElevatorPercent extends CommandBase {
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {
+  public void end() {
     Robot.elevator.moveElevatorPercent(0.0);
+  }
+  @Override
+  protected void interrupted() {
+    end();
   }
 
   // Returns true when the command should end.

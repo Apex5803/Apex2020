@@ -9,10 +9,11 @@ package com.swervedrivespecialties.exampleswerve.commands.DriveTrainCommands;
 
 import com.swervedrivespecialties.exampleswerve.Robot;
 
+import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.geometry.Translation2d;
-import edu.wpi.first.wpilibj2.command.CommandBase;
 
-public class AutoDrive extends CommandBase {
+
+public class AutoDrive extends Command {
   /**
    * Creates a new AutoDrive.
    */
@@ -21,13 +22,15 @@ public class AutoDrive extends CommandBase {
   double currentHeading;
   double deltaAngle;
   double deltaAnglePostMath;
+  boolean fieldOriented;
   
-  public AutoDrive(Translation2d translation, double turnAngle) {
+  public AutoDrive(Translation2d translation, double turnAngle, boolean fieldOriented) {
     // Use addRequirements() here to declare subsystem dependencies.
     this.translation = translation;
     this.turn = turnAngle;
     this.currentHeading = Robot.drivetrain.getRealAngle();
     this.deltaAngle = turnAngle - currentHeading;
+    this.fieldOriented = fieldOriented;
   }
 
   // Called when the command is initially scheduled.
@@ -46,14 +49,18 @@ public class AutoDrive extends CommandBase {
     }
     else deltaAnglePostMath = (deltaAngle/180);
 
-    Robot.drivetrain.drive(translation, deltaAnglePostMath, true);
+    Robot.drivetrain.drive(translation, deltaAnglePostMath, fieldOriented);
   }
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {
-  }
+  public void end() {
 
+  }
+  @Override
+  protected void interrupted() {
+    end();
+  }
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {

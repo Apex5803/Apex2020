@@ -7,20 +7,23 @@
 
 package com.swervedrivespecialties.exampleswerve.commands.TunnelCommands;
 
-import com.swervedrivespecialties.exampleswerve.commands.IntakeCommands.IntakeReverseStatic;
+// import com.swervedrivespecialties.exampleswerve.commands.IntakeCommands.IntakeReverseStatic;
 
-import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
+import edu.wpi.first.wpilibj.command.CommandGroup;
+// import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
 // information, see:
 // https://docs.wpilib.org/en/latest/docs/software/commandbased/convenience-features.html
-public class ExpellBalls extends ParallelCommandGroup {
+public class ExpellBalls extends CommandGroup {
   /**
    * Creates a new ExpellBalls.
    */
   public ExpellBalls() {
     // Add your commands in the super() call, e.g.
     // super(new FooCommand(), new BarCommand());
-    super(new ExtendTunnel(), new TunnelReverse(), new IntakeReverseStatic());
+    // super(new ExtendTunnel(), new TunnelReverse(), new IntakeReverseStatic());
+    addParallel(new ExtendTunnel());
+    addParallel(new TunnelReverse());
   }
 }

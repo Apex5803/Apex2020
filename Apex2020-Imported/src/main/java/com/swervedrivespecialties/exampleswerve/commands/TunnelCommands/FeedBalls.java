@@ -7,18 +7,22 @@
 
 package com.swervedrivespecialties.exampleswerve.commands.TunnelCommands;
 
-import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
+import edu.wpi.first.wpilibj.command.CommandGroup;
+// import edu.wpi.first.wpilibj2.command.CommandGroupBase;
+// import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
 // information, see:
 // https://docs.wpilib.org/en/latest/docs/software/commandbased/convenience-features.html
-public class FeedBalls extends ParallelCommandGroup {
+public class FeedBalls extends CommandGroup {
   /**
    * Creates a new FeedBalls.
    */
   public FeedBalls() {
     // Add your commands in the super() call, e.g.
     // super(new FooCommand(), new BarCommand());
-    super(new ExtendTunnel(), new TunnelForward());
+    // super(new ExtendTunnel(), new TunnelForward());
+    addParallel(new ExtendTunnel());
+    addParallel(new TunnelForward());
   }
 }

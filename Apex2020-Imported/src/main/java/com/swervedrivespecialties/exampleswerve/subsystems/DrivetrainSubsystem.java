@@ -34,6 +34,7 @@ public class DrivetrainSubsystem extends Subsystem {
     private static final double BACK_RIGHT_ANGLE_OFFSET = -Math.toRadians(0.0);
 
     private static DrivetrainSubsystem instance;
+    public boolean fieldOriented;
 
     private final SwerveModule frontLeftModule = new Mk2SwerveModuleBuilder(
             new Vector2(TRACKWIDTH / 2.0, WHEELBASE / 2.0))
@@ -85,6 +86,7 @@ public class DrivetrainSubsystem extends Subsystem {
         frontRightModule.setName("Front Right");
         backLeftModule.setName("Back Left");
         backRightModule.setName("Back Right");
+        fieldOriented = true;
     }
 
     public static DrivetrainSubsystem getInstance() {

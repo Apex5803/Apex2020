@@ -20,10 +20,13 @@ public class Intake extends SubsystemBase {
    * Creates a new Intake.
    */
   private static Intake instance;
+  public boolean IntakeEnabledForDriver;
+  public boolean IntakeExtended;
   TalonSRX Intake1 = new TalonSRX(RobotMap.Intake1);
   DoubleSolenoid IntakeExtender = new DoubleSolenoid(RobotMap.PDP1ID, RobotMap.IntakeExtender_ForwardChannel, RobotMap.IntakeExtender_ReverseChannel);
   public Intake() {
-
+    IntakeEnabledForDriver = false;
+    IntakeExtended = false;
   }
 
   public void RollIntake(ControlMode controlmode, double speed){
@@ -32,10 +35,12 @@ public class Intake extends SubsystemBase {
 
   public void ExtendIntake(){
     IntakeExtender.set(Value.kForward);
+    IntakeExtended = true;
   }
 
   public void RetractIntake(){
     IntakeExtender.set(Value.kReverse);
+    IntakeExtended = false;
   }
 
   @Override

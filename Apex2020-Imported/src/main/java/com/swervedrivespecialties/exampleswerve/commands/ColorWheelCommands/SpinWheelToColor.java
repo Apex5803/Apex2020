@@ -10,9 +10,10 @@ package com.swervedrivespecialties.exampleswerve.commands.ColorWheelCommands;
 import com.swervedrivespecialties.exampleswerve.ConfigValues;
 import com.swervedrivespecialties.exampleswerve.Robot;
 
-import edu.wpi.first.wpilibj2.command.CommandBase;
+import edu.wpi.first.wpilibj.command.Command;
+// import edu.wpi.first.wpilibj2.command.CommandBase;
 
-public class SpinWheelToColor extends CommandBase {
+public class SpinWheelToColor extends Command {
   /**
    * Creates a new SpinWheelToColor.
    */
@@ -35,10 +36,13 @@ public class SpinWheelToColor extends CommandBase {
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {
+  public void end() {
     Robot.colorWheel.spinWheel(0);
   }
-
+ @Override
+protected void interrupted() {
+  end();
+}
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
