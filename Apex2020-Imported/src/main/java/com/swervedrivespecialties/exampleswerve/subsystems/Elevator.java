@@ -24,7 +24,6 @@ public class Elevator extends SubsystemBase {
    * Creates a new Elevator.
    */
 TalonSRX Elevator1 = new TalonSRX(RobotMap.Elevator1);
-VictorSPX Elevator2 = new VictorSPX(RobotMap.Elevator2);
 public DoubleSolenoid ElevatorRotator = new DoubleSolenoid(RobotMap.PDP1ID, RobotMap.ElevatorRotator_ForwardChannel,RobotMap.ElevatorRotator_ReverseChannel);
 public DoubleSolenoid ColorWheelLock = new DoubleSolenoid(RobotMap.PDP1ID, RobotMap.ElevatorWheelPositionLock_ForwardChannel, RobotMap.ElevatorWheelPositionLock_ReverseChannel);
 public DoubleSolenoid ElevatorClimbLock = new DoubleSolenoid(RobotMap.PDP1ID, RobotMap.ElevatorClimbLock_ForwardChannel, RobotMap.ElevatorClimbLock_ReverseChannel);
@@ -40,7 +39,6 @@ public int ButtonPressCount;
     Elevator1.config_kD(0, ConfigValues.Elevator_D);
     Elevator1.config_kF(0, ConfigValues.Elevator_F);
     Elevator1.setNeutralMode(NeutralMode.Brake);
-    Elevator2.follow(Elevator1);
     ElevatorRotatorExtended = true;
     ColorWheelLockExtended = true;
     ClimbLockEngaged = false;
