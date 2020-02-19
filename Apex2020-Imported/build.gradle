@@ -63,7 +63,7 @@ dependencies {
     implementation 'pw.otake.pseudoresonance:pixy2-java-api:1.3.5'
     //id of 2910's common code; number at end is first 10 digits of specific commit id used. 
     //this will need to be updated as new features come out
-    compile 'com.github.FRCTeam2910.Common:robot:942637bdfd'
+    compile 'com.github.FRCTeam2910.Common:robot:5e5b2c7924'
     // Enable simulation gui support. Must check the box in vscode to enable support
     // upon debugging
     simulation wpi.deps.sim.gui(wpi.platforms.desktop, false)
