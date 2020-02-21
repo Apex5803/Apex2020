@@ -9,6 +9,7 @@ package com.swervedrivespecialties.exampleswerve.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
+import com.ctre.phoenix.motorcontrol.SupplyCurrentLimitConfiguration;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import com.swervedrivespecialties.exampleswerve.ConfigValues;
@@ -37,7 +38,9 @@ public class Shooter extends SubsystemBase {
     Shooter1.config_kI(0, ConfigValues.Shooter_I);
     Shooter1.config_kD(0, ConfigValues.Shooter_D);
     Shooter1.config_kF(0, ConfigValues.Shooter_F);
-    
+    Shooter1.configSupplyCurrentLimit(new SupplyCurrentLimitConfiguration(true, 30, 35, 0.2));
+
+  
     
 
   }

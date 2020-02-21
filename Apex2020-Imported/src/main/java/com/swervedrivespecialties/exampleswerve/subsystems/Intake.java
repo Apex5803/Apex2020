@@ -8,6 +8,7 @@
 package com.swervedrivespecialties.exampleswerve.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.SupplyCurrentLimitConfiguration;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.swervedrivespecialties.exampleswerve.RobotMap;
 
@@ -27,6 +28,7 @@ public class Intake extends SubsystemBase {
   public Intake() {
     IntakeEnabledForDriver = false;
     IntakeExtended = false;
+    Intake1.configSupplyCurrentLimit(new SupplyCurrentLimitConfiguration(true, 15, 20, 0.2));
   }
 
   public void RollIntake(ControlMode controlmode, double speed){

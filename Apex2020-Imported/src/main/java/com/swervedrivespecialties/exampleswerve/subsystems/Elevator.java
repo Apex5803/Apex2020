@@ -9,6 +9,7 @@ package com.swervedrivespecialties.exampleswerve.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
+import com.ctre.phoenix.motorcontrol.SupplyCurrentLimitConfiguration;
 import com.ctre.phoenix.motorcontrol.can.TalonFX;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
@@ -39,6 +40,7 @@ public int ButtonPressCount;
     Elevator1.config_kD(0, ConfigValues.Elevator_D);
     Elevator1.config_kF(0, ConfigValues.Elevator_F);
     Elevator1.setNeutralMode(NeutralMode.Brake);
+    Elevator1.configSupplyCurrentLimit(new SupplyCurrentLimitConfiguration(true, 30, 35, 0.2));
     ElevatorRotatorExtended = true;
     ColorWheelLockExtended = true;
     ClimbLockEngaged = false;

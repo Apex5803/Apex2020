@@ -10,6 +10,7 @@ package com.swervedrivespecialties.exampleswerve.subsystems;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
+import com.ctre.phoenix.motorcontrol.SupplyCurrentLimitConfiguration;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.swervedrivespecialties.exampleswerve.ConfigValues;
 import com.swervedrivespecialties.exampleswerve.Robot;
@@ -50,6 +51,7 @@ public class ColorWheel extends SubsystemBase {
     Wheel1.config_kD(0, ConfigValues.Spinner_D);
     Wheel1.config_kF(0, ConfigValues.Spinner_F);
     Wheel1.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative);
+    Wheel1.configSupplyCurrentLimit(new SupplyCurrentLimitConfiguration(true, 15, 20, 0.2));
     m_colorMatcher.addColorMatch(kBlueTarget);
     m_colorMatcher.addColorMatch(kGreenTarget);
     m_colorMatcher.addColorMatch(kRedTarget);
