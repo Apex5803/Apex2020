@@ -1,5 +1,6 @@
 package com.swervedrivespecialties.exampleswerve;
 
+import com.swervedrivespecialties.exampleswerve.commands.ShooterCommands.RetractHood;
 import com.swervedrivespecialties.exampleswerve.subsystems.*;
 import com.swervedrivespecialties.exampleswerve.utils.ColorChangeCounter;
 import com.swervedrivespecialties.exampleswerve.utils.GameData;
@@ -7,6 +8,7 @@ import com.swervedrivespecialties.exampleswerve.utils.GameData;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 // import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 
 public class Robot extends TimedRobot {
@@ -29,7 +31,6 @@ public class Robot extends TimedRobot {
 
     @Override
     public void robotInit() {
-        oi = new OI();
         drivetrain = DrivetrainSubsystem.getInstance();
         intake = Intake.getInstance();
         shooter = Shooter.getInstance();
@@ -40,6 +41,8 @@ public class Robot extends TimedRobot {
         // colorWheel = ColorWheel.getInstance();
         limelight = Limelight.getInstance();
         pixyCam = PixyCam.getInstance();
+        oi = new OI();
+
         
         
         
@@ -70,7 +73,8 @@ public class Robot extends TimedRobot {
 
     
     public void teleopInit(){
-
+        new RetractHood();
+        
     }
 
     public void teleopPeriodic(){

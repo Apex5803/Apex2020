@@ -43,6 +43,9 @@ public class RaiseElevator extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
+    if(Robot.elevator.ElevatorRotatorExtended == true){
+      return true;
+    }
     return false;
   }
 }

@@ -19,23 +19,23 @@ public class DriveCommand extends Command {
     @Override
     protected void execute() {
         double forward = -Robot.getOi().getXbox1().getRawAxis(1);
-        double strafe = -Robot.getOi().getXbox1().getRawAxis(0);
+        double strafe = Robot.getOi().getXbox1().getRawAxis(0);
 
-        forward =  NumberUtils.TwoEntryDeadzoneY(forward, strafe, ConfigValues.XboxDriverLeftStickDeadband );
+        forward =  Utilities.deadband(forward,  ConfigValues.XboxDriverLeftStickDeadband );
         // Square the forward stick
-        forward = Math.copySign(Math.pow(forward, 2.0), forward);
+        // forward = Math.copySign(Math.pow(forward, 2.0), forward);
 
         
-        strafe =  NumberUtils.TwoEntryDeadzoneX(forward, strafe, ConfigValues.XboxDriverLeftStickDeadband);
+        strafe =  Utilities.deadband(strafe, ConfigValues.XboxDriverLeftStickDeadband);
         // Square the strafe stick
-        strafe = Math.copySign(Math.pow(strafe, 2.0), strafe);
+        // strafe = Math.copySign(Math.pow(strafe, 2.0), strafe);
 
         double rotation = -Robot.getOi().getXbox1().getRawAxis(4);
         rotation = Utilities.deadband(rotation);
         // Square the rotation stick
-        rotation = Math.copySign(Math.pow(rotation, 2.0), rotation);
+        // rotation = Math.copySign(Math.pow(rotation, 2.0), rotation);
 
-        DrivetrainSubsystem.getInstance().drive(new Translation2d(forward, strafe), rotation, Robot.drivetrain.fieldOriented);
+        DrivetrainSubsystem.getInstance().drive(new Translation2d(strafe, forward), rotation, Robot.drivetrain.fieldOriented);
     }
 
     @Override

@@ -64,7 +64,9 @@ public class AutoDrive extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-
+if (Robot.drivetrain.gyroscope.getAngle().toDegrees() <= deltaAnglePostMath + 1 && Robot.drivetrain.gyroscope.getAngle().toDegrees() >= deltaAnglePostMath - 1 ){
+  return true;
+}
     return false;
   }
 }

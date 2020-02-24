@@ -23,19 +23,19 @@ public class ExtendIntake extends Command {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    Robot.intake.ExtendIntake();
+   
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-   
+    Robot.intake.ExtendIntake();
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end() {
-    Robot.intake.RetractIntake();
+    // Robot.intake.RetractIntake();
   }
   @Override
   protected void interrupted() {
@@ -45,6 +45,9 @@ public class ExtendIntake extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    if(Robot.intake.IntakeExtended == true){
+      return true;
+    }
+    else return false;
   }
 }

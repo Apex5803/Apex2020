@@ -28,13 +28,13 @@ public class ConfigValues{
 
     public static double Spinner_Peak_Output = 1;
 
-    public static double Shooter_Test_Speed = 3900;
+    public static double Shooter_Test_Speed = .40;
 
     public static int colorWheelRPMS = 30;
 
     public static double pixyTargetScaleModifier = 2.0;
 
-    public static double XboxDriverLeftStickDeadband = 0.1;
+    public static double XboxDriverLeftStickDeadband = 0.05;
     public static int LowestClimbPositionLimiting = 490; //TODO Set these value after testing
     public static int HighestClimbPosition = 1500;
     public static int MidClimbPosition = 1000;

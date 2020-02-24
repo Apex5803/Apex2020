@@ -30,12 +30,14 @@ public class IntakeForwardStatic extends Command {
   @Override
   public void execute() {
     Robot.intake.RollIntake(ControlMode.PercentOutput, 0.4);
+    Robot.tunnel.runTunnel(ControlMode.PercentOutput, 0.2);
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end() {
     Robot.intake.RollIntake(ControlMode.PercentOutput, 0.0);
+    Robot.tunnel.runTunnel(ControlMode.PercentOutput, 0.0);
   }
   @Override
   protected void interrupted() {

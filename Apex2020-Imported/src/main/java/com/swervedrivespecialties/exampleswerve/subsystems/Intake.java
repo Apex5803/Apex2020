@@ -25,10 +25,11 @@ public class Intake extends SubsystemBase {
   public boolean IntakeEnabledForDriver;
   public boolean IntakeExtended;
   VictorSPX Intake1 = new VictorSPX(RobotMap.Intake1);
-  DoubleSolenoid IntakeExtender = new DoubleSolenoid(RobotMap.PDP1ID, RobotMap.IntakeExtender_ForwardChannel, RobotMap.IntakeExtender_ReverseChannel);
+  public DoubleSolenoid IntakeExtender = new DoubleSolenoid(RobotMap.PDP1ID, RobotMap.IntakeExtender_ForwardChannel, RobotMap.IntakeExtender_ReverseChannel);
   public Intake() {
     IntakeEnabledForDriver = false;
     IntakeExtended = false;
+    // IntakeExtended = false;
   }
 
   public void RollIntake(ControlMode controlmode, double speed){

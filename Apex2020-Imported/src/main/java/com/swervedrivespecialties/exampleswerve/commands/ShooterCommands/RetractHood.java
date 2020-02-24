@@ -9,6 +9,7 @@ package com.swervedrivespecialties.exampleswerve.commands.ShooterCommands;
 
 import com.swervedrivespecialties.exampleswerve.Robot;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
@@ -42,6 +43,9 @@ public class RetractHood extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    if (Robot.shooter.ShooterHood.get() == Value.kReverse){
+      return true;
+    }
+    else return false;
   }
 }

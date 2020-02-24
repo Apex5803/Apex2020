@@ -58,20 +58,28 @@ public class OI {
         Button OperatorRStickClick = new JoystickButton(xbox2, 10);
         TriggerButton OperatorLeftTrigger = new TriggerButton(xbox2, 2);
         TriggerButton OperatorRightTrigger = new TriggerButton(xbox2, 3);
-        TriggerButton OperatorLeftJoystickY = new TriggerButton(xbox2, 0);
+        TriggerButton OperatorLeftJoystickY = new TriggerButton(xbox2, 1);
 
         OperatorA.whenPressed(new ColorWheelPositionToggle());
         OperatorB.whileHeld(new SpinWheelToColor());
         OperatorX.whenPressed(new SpinWheelToPosition(24));
         OperatorY.whileHeld(new FeedBalls());
-        OperatorLeftJoystickY.whileActive(new MoveElevatorPercent(-1 * Utilities.deadband(xbox2.getRawAxis(3), 0.1)));
-        OperatorDpadUp.whenPressed(new MoveElevatorPosition(ConfigValues.HighestClimbPosition));
-        OperatorDpadLeft.whenPressed(new MoveElevatorPosition(ConfigValues.LowestClimbPosition));
-        OperatorDpadRight.whenPressed(new MoveElevatorPosition(ConfigValues.MidClimbPosition));
-        OperatorDpadDown.whenPressed(new MoveElevatorPosition(ConfigValues.LowestElevatorPosition));
+        OperatorLeftJoystickY.whileActive(new MoveElevatorPercent());
+        // OperatorDpadUp.whenPressed(new MoveElevatorPosition(ConfigValues.HighestClimbPosition));
+        // OperatorDpadLeft.whenPressed(new MoveElevatorPosition(ConfigValues.LowestClimbPosition));
+        // OperatorDpadRight.whenPressed(new MoveElevatorPosition(ConfigValues.MidClimbPosition));
+        // OperatorDpadDown.whenPressed(new MoveElevatorPosition(ConfigValues.LowestElevatorPosition));
+        OperatorDpadDown.whenPressed(new RetractHood());
+        OperatorDpadUp.whenPressed(new ExtendHood());
+        OperatorDpadLeft.whenPressed(new RaiseElevator());
+        OperatorDpadRight.whenPressed(new LowerElevator());
+        // OperatorDpadUp.whenActive(new ExtendIntake());
+        // OperatorDpadDown.whenActive(new RetractIntake());
         OperatorStartButton.whenPressed(new LockElevator());
         OperatorLBumper.whenPressed(new ToggleIntakePosition());
-        OperatorRBumper.whileHeld(new LimelightShoot());
+        OperatorRBumper.whileHeld(new Shooter_Test());
+        // OperatorBackButton.whenPressed(new RaiseElevator());
+        // OperatorRStickClick.whenPressed(new LowerElevator());
         OperatorRightTrigger.whileActive(new IntakeForwardStatic());
         OperatorLeftTrigger.whileActive(new IntakeReverseStatic());
 

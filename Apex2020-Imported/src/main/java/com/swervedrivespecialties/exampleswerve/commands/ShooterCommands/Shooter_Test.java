@@ -35,6 +35,7 @@ public class Shooter_Test extends Command {
   // Called once the command ends or is interrupted.
   @Override
   public void end() {
+    Robot.shooter.TestShoot(0.0);
   }
   @Override
   protected void interrupted() {

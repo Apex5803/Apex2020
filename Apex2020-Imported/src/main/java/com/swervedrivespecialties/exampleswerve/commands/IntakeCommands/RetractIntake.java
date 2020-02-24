@@ -23,13 +23,13 @@ public class RetractIntake extends Command {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    Robot.intake.RetractIntake();
+    
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    
+    Robot.intake.RetractIntake();
   }
 
   // Called once the command ends or is interrupted.
@@ -43,6 +43,9 @@ public class RetractIntake extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    if (Robot.intake.IntakeExtended == false){
+      return true;
+    }
+    else return false;
   }
 }

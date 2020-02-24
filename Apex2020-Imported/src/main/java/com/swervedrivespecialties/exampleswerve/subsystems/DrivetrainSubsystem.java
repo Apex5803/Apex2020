@@ -1,5 +1,6 @@
 package com.swervedrivespecialties.exampleswerve.subsystems;
 
+import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.SupplyCurrentLimitConfiguration;
 import com.ctre.phoenix.motorcontrol.can.TalonFX;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
@@ -28,13 +29,13 @@ import org.frcteam2910.common.robot.drivers.Mk2SwerveModuleBuilder;
 import org.frcteam2910.common.robot.drivers.NavX;
 
 public class DrivetrainSubsystem extends Subsystem {
-    private static final double TRACKWIDTH = 19.5;
-    private static final double WHEELBASE = 23.5;
+    private static final double TRACKWIDTH = 28.5;
+    private static final double WHEELBASE = 17.375;
 
-    private static final double FRONT_LEFT_ANGLE_OFFSET = -Math.toRadians(0.0);
-    private static final double FRONT_RIGHT_ANGLE_OFFSET = -Math.toRadians(0.0);
-    private static final double BACK_LEFT_ANGLE_OFFSET = -Math.toRadians(0.0);
-    private static final double BACK_RIGHT_ANGLE_OFFSET = -Math.toRadians(0.0);
+    private static final double FRONT_LEFT_ANGLE_OFFSET = -Math.toRadians(300.10);
+    private static final double FRONT_RIGHT_ANGLE_OFFSET = -Math.toRadians(221.05);
+    private static final double BACK_LEFT_ANGLE_OFFSET = -Math.toRadians(118.13);
+    private static final double BACK_RIGHT_ANGLE_OFFSET = -Math.toRadians(152.32);
     private TalonFX FrontLeftAngleMotor;
     private TalonFX FrontLeftDriveMotor;
     private TalonFX FrontRightAngleMotor;
@@ -51,33 +52,33 @@ public class DrivetrainSubsystem extends Subsystem {
     private final SwerveModule frontLeftModule = new Mk2SwerveModuleBuilder(
             new Vector2(TRACKWIDTH / 2.0, WHEELBASE / 2.0))
             .angleEncoder(new AnalogInput(RobotMap.DRIVETRAIN_FRONT_LEFT_ANGLE_ENCODER), FRONT_LEFT_ANGLE_OFFSET)
-            .angleMotor(FrontLeftAngleMotor
+            .angleMotor(FrontLeftAngleMotor = new TalonFX(RobotMap.DRIVETRAIN_FRONT_LEFT_ANGLE_MOTOR)
                     )
-            .driveMotor(FrontLeftDriveMotor
+            .driveMotor(FrontLeftDriveMotor = new TalonFX(RobotMap.DRIVETRAIN_FRONT_LEFT_DRIVE_MOTOR)
              )
             .build();
     private final SwerveModule frontRightModule = new Mk2SwerveModuleBuilder(
             new Vector2(TRACKWIDTH / 2.0, -WHEELBASE / 2.0))
             .angleEncoder(new AnalogInput(RobotMap.DRIVETRAIN_FRONT_RIGHT_ANGLE_ENCODER), FRONT_RIGHT_ANGLE_OFFSET)
-            .angleMotor(FrontRightAngleMotor
+            .angleMotor(FrontRightAngleMotor = new TalonFX(RobotMap.DRIVETRAIN_FRONT_RIGHT_ANGLE_MOTOR)
             )
-            .driveMotor(FrontRightDriveMotor
+            .driveMotor(FrontRightDriveMotor = new TalonFX(RobotMap.DRIVETRAIN_FRONT_RIGHT_DRIVE_MOTOR)
             )
             .build();
     private final SwerveModule backLeftModule = new Mk2SwerveModuleBuilder(
             new Vector2(-TRACKWIDTH / 2.0, WHEELBASE / 2.0))
             .angleEncoder(new AnalogInput(RobotMap.DRIVETRAIN_BACK_LEFT_ANGLE_ENCODER), BACK_LEFT_ANGLE_OFFSET)
-            .angleMotor(BackLeftAngleMotor
+            .angleMotor(BackLeftAngleMotor = new TalonFX(RobotMap.DRIVETRAIN_BACK_LEFT_ANGLE_MOTOR)
             )
-            .driveMotor(BackLeftDriveMotor
+            .driveMotor(BackLeftDriveMotor = new TalonFX(RobotMap.DRIVETRAIN_BACK_LEFT_DRIVE_MOTOR)
             )
             .build();
     private final SwerveModule backRightModule = new Mk2SwerveModuleBuilder(
             new Vector2(-TRACKWIDTH / 2.0, -WHEELBASE / 2.0))
             .angleEncoder(new AnalogInput(RobotMap.DRIVETRAIN_BACK_RIGHT_ANGLE_ENCODER), BACK_RIGHT_ANGLE_OFFSET)
-            .angleMotor(BackRightAngleMotor
+            .angleMotor(BackRightAngleMotor = new TalonFX(RobotMap.DRIVETRAIN_BACK_RIGHT_ANGLE_MOTOR)
             )
-            .driveMotor(BackRightDriveMotor
+            .driveMotor(BackRightDriveMotor = new TalonFX(RobotMap.DRIVETRAIN_BACK_RIGHT_DRIVE_MOTOR)
             )
             .build();
 
@@ -93,22 +94,25 @@ public class DrivetrainSubsystem extends Subsystem {
     public DrivetrainSubsystem() {
         gyroscope.calibrate();      //TODO set inverted or not as necessary
         gyroscope.setInverted(true); // You might not need to invert the gyro 
-        FrontLeftAngleMotor = new TalonFX(RobotMap.DRIVETRAIN_FRONT_LEFT_ANGLE_MOTOR);
-        FrontLeftDriveMotor = new TalonFX(RobotMap.DRIVETRAIN_FRONT_LEFT_DRIVE_MOTOR);
-        FrontRightAngleMotor = new TalonFX(RobotMap.DRIVETRAIN_FRONT_RIGHT_ANGLE_MOTOR);
-        FrontRightDriveMotor = new TalonFX(RobotMap.DRIVETRAIN_FRONT_RIGHT_DRIVE_MOTOR);
-        BackLeftAngleMotor = new TalonFX(RobotMap.DRIVETRAIN_BACK_LEFT_ANGLE_MOTOR);
-        BackLeftDriveMotor = new TalonFX(RobotMap.DRIVETRAIN_BACK_LEFT_DRIVE_MOTOR);
-        BackRightAngleMotor = new TalonFX(RobotMap.DRIVETRAIN_BACK_RIGHT_ANGLE_MOTOR);
-        BackRightDriveMotor = new TalonFX(RobotMap.DRIVETRAIN_BACK_RIGHT_DRIVE_MOTOR);
+
         FrontLeftAngleMotor.configSupplyCurrentLimit(new SupplyCurrentLimitConfiguration(true, 30, 35, 0.2));
+        FrontLeftAngleMotor.setNeutralMode(NeutralMode.Brake);
         FrontLeftDriveMotor.configSupplyCurrentLimit(new SupplyCurrentLimitConfiguration(true, 30, 35, 0.2));
+        FrontLeftDriveMotor.setNeutralMode(NeutralMode.Coast);
+        FrontRightDriveMotor.setInverted(true);
         FrontRightAngleMotor.configSupplyCurrentLimit(new SupplyCurrentLimitConfiguration(true, 30, 35, 0.2));
+        FrontRightAngleMotor.setNeutralMode(NeutralMode.Brake);
         FrontRightDriveMotor.configSupplyCurrentLimit(new SupplyCurrentLimitConfiguration(true, 30, 35, 0.2));
+        FrontRightDriveMotor.setNeutralMode(NeutralMode.Coast);
         BackLeftAngleMotor.configSupplyCurrentLimit(new SupplyCurrentLimitConfiguration(true, 30, 35, 0.2));
+        BackLeftAngleMotor.setNeutralMode(NeutralMode.Brake);
         BackLeftDriveMotor.configSupplyCurrentLimit(new SupplyCurrentLimitConfiguration(true, 30, 35, 0.2));
+        BackLeftDriveMotor.setNeutralMode(NeutralMode.Coast);
         BackRightAngleMotor.configSupplyCurrentLimit(new SupplyCurrentLimitConfiguration(true, 30, 35, 0.2));
+        BackRightAngleMotor.setNeutralMode(NeutralMode.Brake);
+        BackRightDriveMotor.setInverted(true);
         BackRightDriveMotor.configSupplyCurrentLimit(new SupplyCurrentLimitConfiguration(true, 30, 35, 0.2));
+        BackRightDriveMotor.setNeutralMode(NeutralMode.Coast);
         frontLeftModule.setName("Front Left");
         frontRightModule.setName("Front Right");
         backLeftModule.setName("Back Left");
