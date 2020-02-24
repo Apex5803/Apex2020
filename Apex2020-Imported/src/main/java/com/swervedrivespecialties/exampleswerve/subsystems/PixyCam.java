@@ -12,12 +12,14 @@ import java.util.ArrayList;
 import com.swervedrivespecialties.exampleswerve.RobotMap;
 
 import edu.wpi.first.wpilibj.I2C;
+import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import io.github.pseudoresonance.pixy2api.Pixy2;
 import io.github.pseudoresonance.pixy2api.Pixy2CCC;
 import io.github.pseudoresonance.pixy2api.Pixy2.LinkType;
 import io.github.pseudoresonance.pixy2api.Pixy2CCC.*;
 import io.github.pseudoresonance.pixy2api.links.I2CLink;
+import io.github.pseudoresonance.pixy2api.links.SPILink;
 
 
 public class PixyCam extends SubsystemBase {
@@ -27,8 +29,8 @@ public class PixyCam extends SubsystemBase {
   private static Pixy2 pixy;
   private static PixyCam pixyCam;
   public PixyCam() {
-    pixy = Pixy2.createInstance(new I2CLink());
-    pixy.init(RobotMap.Pixy2SPI_ID);
+    pixy = Pixy2.createInstance(Pixy2.LinkType.SPI);
+    pixy.init();
     pixy.setLamp((byte) 1, (byte) 1); // Turns the LEDs on
 		pixy.setLED(255, 255, 255); // Sets the RGB LED white
   }
