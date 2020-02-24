@@ -12,6 +12,7 @@ import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.SupplyCurrentLimitConfiguration;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import com.swervedrivespecialties.exampleswerve.ConfigValues;
 import com.swervedrivespecialties.exampleswerve.RobotMap;
 
@@ -24,7 +25,7 @@ public class Tunnel extends SubsystemBase {
    * Creates a new Tunnel.
    */
     
-   TalonSRX Tunnel1 = new TalonSRX(RobotMap.Tunnel1);
+   VictorSPX Tunnel1 = new VictorSPX(RobotMap.Tunnel1);
    DoubleSolenoid TunnelPiston = new DoubleSolenoid(RobotMap.PDP1ID, RobotMap.TunnelPiston_ForwardChannel, RobotMap.TunnelPiston_ReverseChannel);
    private static Tunnel instance;
   
@@ -38,7 +39,7 @@ public class Tunnel extends SubsystemBase {
     // Tunnel1.config_kD(0, ConfigValues.Tunnel_D);
     // Tunnel1.config_kF(0, ConfigValues.Tunnel_F);
     Tunnel1.setNeutralMode(NeutralMode.Brake);
-    Tunnel1.configSupplyCurrentLimit(new SupplyCurrentLimitConfiguration(true, 15, 20, 0.2));
+    // Tunnel1.configSupplyCurrentLimit(new SupplyCurrentLimitConfiguration(true, 15, 20, 0.2));
   }
 
 public void runTunnel(ControlMode controlmode, double speed){

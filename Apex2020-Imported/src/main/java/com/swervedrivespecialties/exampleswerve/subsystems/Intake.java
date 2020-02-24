@@ -10,6 +10,7 @@ package com.swervedrivespecialties.exampleswerve.subsystems;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.SupplyCurrentLimitConfiguration;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import com.swervedrivespecialties.exampleswerve.RobotMap;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
@@ -23,12 +24,11 @@ public class Intake extends SubsystemBase {
   private static Intake instance;
   public boolean IntakeEnabledForDriver;
   public boolean IntakeExtended;
-  TalonSRX Intake1 = new TalonSRX(RobotMap.Intake1);
+  VictorSPX Intake1 = new VictorSPX(RobotMap.Intake1);
   DoubleSolenoid IntakeExtender = new DoubleSolenoid(RobotMap.PDP1ID, RobotMap.IntakeExtender_ForwardChannel, RobotMap.IntakeExtender_ReverseChannel);
   public Intake() {
     IntakeEnabledForDriver = false;
     IntakeExtended = false;
-    Intake1.configSupplyCurrentLimit(new SupplyCurrentLimitConfiguration(true, 15, 20, 0.2));
   }
 
   public void RollIntake(ControlMode controlmode, double speed){

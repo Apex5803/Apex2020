@@ -41,6 +41,9 @@ public class Robot extends TimedRobot {
         limelight = Limelight.getInstance();
         pixyCam = PixyCam.getInstance();
         
+        
+        
+        limelight.enableLED();
     }
 
     @Override
@@ -50,7 +53,7 @@ public class Robot extends TimedRobot {
 
 
     public void disabledInit(){
-
+        limelight.disableLED();
     }
 
     public void disabledPeriodic(){

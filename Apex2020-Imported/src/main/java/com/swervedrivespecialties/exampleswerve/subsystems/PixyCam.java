@@ -28,7 +28,7 @@ public class PixyCam extends SubsystemBase {
   private static PixyCam pixyCam;
   public PixyCam() {
     pixy = Pixy2.createInstance(new I2CLink());
-    pixy.init(RobotMap.Pixy2I2C_ID);
+    pixy.init(RobotMap.Pixy2SPI_ID);
     pixy.setLamp((byte) 1, (byte) 1); // Turns the LEDs on
 		pixy.setLED(255, 255, 255); // Sets the RGB LED white
   }

@@ -8,14 +8,19 @@
 package com.swervedrivespecialties.exampleswerve.subsystems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+
+import com.swervedrivespecialties.exampleswerve.RobotMap;
+
 import edu.wpi.first.cameraserver.*;
 import edu.wpi.first.networktables.NetworkTableInstance;
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.networktables.*;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 
 public class Limelight extends SubsystemBase {
   NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight");
+  private Solenoid ledRing; 
     public boolean HasValidTarget = false;
     // double m_LimeLightDriveCommand = 0.0;
     public double SteerCommand = 0.0;
@@ -25,8 +30,7 @@ public class Limelight extends SubsystemBase {
    * Creates a new Limelight.
    */
   public Limelight() {
-    
-
+    ledRing = new Solenoid(RobotMap.PDP2ID, RobotMap.LEDRingID);
   }
 
 
@@ -57,6 +61,14 @@ public class Limelight extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
+  }
+
+  public void enableLED(){
+    ledRing.set(true);
+  }
+
+  public void disableLED(){
+    ledRing.set(false);
   }
   public static Limelight getInstance() {
     if (instance == null) {

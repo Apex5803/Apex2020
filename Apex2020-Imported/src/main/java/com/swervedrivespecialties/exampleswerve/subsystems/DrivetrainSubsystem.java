@@ -3,9 +3,11 @@ package com.swervedrivespecialties.exampleswerve.subsystems;
 import com.ctre.phoenix.motorcontrol.SupplyCurrentLimitConfiguration;
 import com.ctre.phoenix.motorcontrol.can.TalonFX;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.ctre.phoenix.sensors.PigeonIMU;
 // import com.revrobotics.CANSparkMax;
 // import com.revrobotics.CANSparkMaxLowLevel;
 import com.swervedrivespecialties.exampleswerve.RobotMap;
+import com.swervedrivespecialties.exampleswerve.Drivers.Pigeon;
 import com.swervedrivespecialties.exampleswerve.commands.DriveTrainCommands.DriveCommand;
 
 import edu.wpi.first.wpilibj.AnalogInput;
@@ -86,7 +88,7 @@ public class DrivetrainSubsystem extends Subsystem {
             new Translation2d(-TRACKWIDTH / 2.0, -WHEELBASE / 2.0)
     );
 
-    public final Gyroscope gyroscope = new NavX(SPI.Port.kMXP);
+    public final Gyroscope gyroscope = new Pigeon(RobotMap.PigeonID);
 
     public DrivetrainSubsystem() {
         gyroscope.calibrate();      //TODO set inverted or not as necessary

@@ -24,14 +24,15 @@ public class Elevator extends SubsystemBase {
   /**
    * Creates a new Elevator.
    */
-TalonSRX Elevator1 = new TalonSRX(RobotMap.Elevator1);
-public DoubleSolenoid ElevatorRotator = new DoubleSolenoid(RobotMap.PDP1ID, RobotMap.ElevatorRotator_ForwardChannel,RobotMap.ElevatorRotator_ReverseChannel);
+TalonFX Elevator1 = new TalonFX(RobotMap.Elevator1);
+public DoubleSolenoid ElevatorRotator = new DoubleSolenoid(RobotMap.PDP2ID, RobotMap.ElevatorRotator_ForwardChannel,RobotMap.ElevatorRotator_ReverseChannel);
 public DoubleSolenoid ColorWheelLock = new DoubleSolenoid(RobotMap.PDP1ID, RobotMap.ElevatorWheelPositionLock_ForwardChannel, RobotMap.ElevatorWheelPositionLock_ReverseChannel);
-public DoubleSolenoid ElevatorClimbLock = new DoubleSolenoid(RobotMap.PDP1ID, RobotMap.ElevatorClimbLock_ForwardChannel, RobotMap.ElevatorClimbLock_ReverseChannel);
+public DoubleSolenoid ElevatorClimbLock = new DoubleSolenoid(RobotMap.PDP2ID, RobotMap.ElevatorClimbLock_ForwardChannel, RobotMap.ElevatorClimbLock_ReverseChannel);
 private static Elevator instance;
 public boolean ElevatorRotatorExtended;
 public boolean ColorWheelLockExtended;
 public boolean ClimbLockEngaged;
+
 public int ButtonPressCount;
 
   public Elevator() {
@@ -65,20 +66,32 @@ public int ButtonPressCount;
   }
 
   public void moveElevatorPosition(int EncoderPosition){
-    if(ClimbLockEngaged = true &&  EncoderPosition < getElevatorPosition){
+    if(ClimbLockEngaged = true &&  EncoderPosition > getElevatorPosition && ElevatorRotatorExtended == true){
       retractElevatorClimbLock();
-      ClimbLockEngaged = false;
+
+      Elevator1.set(ControlMode.MotionMagic, EncoderPosition);
     }
-    Elevator1.set(ControlMode.MotionMagic, EncoderPosition);
+    else if(ElevatorRotatorExtended == true && ClimbLockEngaged == false){
+      Elevator1.set(ControlMode.MotionMagic, EncoderPosition);
+    }
+    else if(ElevatorRotatorExtended == false && EncoderPosition <= getElevatorPosition){
+      Elevator1.set(ControlMode.MotionMagic, EncoderPosition);
+    }
 
   }
 
   public void moveElevatorPercent(double PercentOutput){
-    if(ClimbLockEngaged = true && PercentOutput < 0){
+    if(ClimbLockEngaged = true && PercentOutput > 0 && ElevatorRotatorExtended == true){
       retractElevatorClimbLock();
-      ClimbLockEngaged = false;
+      Elevator1.set(ControlMode.PercentOutput, PercentOutput);
     }
-    Elevator1.set(ControlMode.PercentOutput, PercentOutput);
+    else if(ElevatorRotatorExtended == true && ClimbLockEngaged == false){
+      Elevator1.set(ControlMode.PercentOutput, PercentOutput);
+    }
+    else if(ElevatorRotatorExtended == false && PercentOutput <= 0){
+      Elevator1.set(ControlMode.PercentOutput, PercentOutput);
+    }
+  
   }
 
 
@@ -93,12 +106,12 @@ public int ButtonPressCount;
 
   public void extendElevatorClimbLock(){
     if(getElevatorPosition > ConfigValues.LowestClimbPositionLimiting){
-    ElevatorClimbLock.set(Value.kForward);
+    ElevatorClimbLock.set(Value.kReverse);
     ClimbLockEngaged = true;
   }
 }
   public void retractElevatorClimbLock(){
-    ElevatorClimbLock.set(Value.kReverse);
+    ElevatorClimbLock.set(Value.kForward);
     ClimbLockEngaged = false;
   }
 
