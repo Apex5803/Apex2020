@@ -36,8 +36,8 @@ public class Robot extends TimedRobot {
         tunnel = Tunnel.getInstance();
         elevator = Elevator.getInstance();
         gameData = GameData.getInstance();
-        colorChangeCounter = ColorChangeCounter.getInstance();
-        colorWheel = ColorWheel.getInstance();
+        // colorChangeCounter = ColorChangeCounter.getInstance();
+        // colorWheel = ColorWheel.getInstance();
         limelight = Limelight.getInstance();
         pixyCam = PixyCam.getInstance();
         

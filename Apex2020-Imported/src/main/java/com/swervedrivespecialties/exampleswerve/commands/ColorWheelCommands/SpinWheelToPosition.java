@@ -31,16 +31,16 @@ public class SpinWheelToPosition extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if(Robot.colorChangeCounter.countColors() < specifiedColorChanges){
-      Robot.colorWheel.spinWheel(ConfigValues.colorWheelRPMS);
-    }
-    else end();
+    // if(Robot.colorChangeCounter.countColors() < specifiedColorChanges){
+    //   Robot.colorWheel.spinWheel(ConfigValues.colorWheelRPMS);
+    // }
+    // else end();
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end() {
-    Robot.colorWheel.spinWheel(0);
+    // Robot.colorWheel.spinWheel(0);
   }
   @Override
   protected void interrupted() {
@@ -50,9 +50,10 @@ public class SpinWheelToPosition extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    if(Robot.colorChangeCounter.countColors() >= specifiedColorChanges){
-      return true;
-    }
+    // if(Robot.colorChangeCounter.countColors() >= specifiedColorChanges){
+    //   return true;
+    // }
+    // else return false;
     return false;
   }
 }

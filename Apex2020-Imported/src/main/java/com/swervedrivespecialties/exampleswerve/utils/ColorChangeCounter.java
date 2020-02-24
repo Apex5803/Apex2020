@@ -27,24 +27,24 @@ public class ColorChangeCounter {
     }
 
 
-    public int countColors(){
-        currentColor = Robot.colorWheel.getRobotColorString();
-        if (currentColor != lastColor && currentColor != "N"){
-            deltaColorCount = Math.incrementExact(deltaColorCount);
-        }
+    // public int countColors(){
+    //     currentColor = Robot.colorWheel.getRobotColorString();
+    //     if (currentColor != lastColor && currentColor != "N"){
+    //         deltaColorCount = Math.incrementExact(deltaColorCount);
+    //     }
 
-        if (currentColor == "N"){
-            deltaColorCount = 0;
-        }
-        lastColor = currentColor;
+    //     if (currentColor == "N"){
+    //         deltaColorCount = 0;
+    //     }
+    //     lastColor = currentColor;
         
-        return deltaColorCount;
-    }
+    //     return deltaColorCount;
+    // }
 
-    public static ColorChangeCounter getInstance(){
-        if (instance == null) {
-            instance = new ColorChangeCounter();
-        }
-        return instance;
-    }
+    // public static ColorChangeCounter getInstance(){
+    //     if (instance == null) {
+    //         instance = new ColorChangeCounter();
+    //     }
+    //     return instance;
+    // }
 }
