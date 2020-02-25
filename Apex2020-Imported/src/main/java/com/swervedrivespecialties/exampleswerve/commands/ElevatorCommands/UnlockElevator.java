@@ -5,15 +5,14 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package com.swervedrivespecialties.exampleswerve.commands.IntakeCommands;
+package com.swervedrivespecialties.exampleswerve.commands.ElevatorCommands;
 
 import com.swervedrivespecialties.exampleswerve.Robot;
 
-import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Command;
 
-public class ToggleIntakePosition extends Command {
-  public ToggleIntakePosition() {
+public class UnlockElevator extends Command {
+  public UnlockElevator() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
   }
@@ -21,18 +20,12 @@ public class ToggleIntakePosition extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-   
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    if(Robot.intake.IntakeExtender.get() == Value.kForward){
-      Robot.intake.RetractIntake();
-    }
-    else if (Robot.intake.IntakeExtender.get() == Value.kReverse) {
-      Robot.intake.ExtendIntake();
-    }
+    Robot.elevator.retractElevatorClimbLock();
   }
 
   // Make this return true when this Command no longer needs to run execute()

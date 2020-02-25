@@ -5,6 +5,8 @@ import com.swervedrivespecialties.exampleswerve.subsystems.*;
 import com.swervedrivespecialties.exampleswerve.utils.ColorChangeCounter;
 import com.swervedrivespecialties.exampleswerve.utils.GameData;
 
+import edu.wpi.cscore.UsbCamera;
+import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 // import edu.wpi.first.wpilibj.DriverStation;
@@ -42,6 +44,8 @@ public class Robot extends TimedRobot {
         limelight = Limelight.getInstance();
         pixyCam = PixyCam.getInstance();
         oi = new OI();
+        UsbCamera camera1 = CameraServer.getInstance().startAutomaticCapture(0);
+        camera1.setResolution(160, 120);
 
         
         

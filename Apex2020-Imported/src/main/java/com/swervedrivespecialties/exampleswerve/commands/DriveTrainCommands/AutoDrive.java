@@ -27,9 +27,7 @@ public class AutoDrive extends Command {
   public AutoDrive(Translation2d translation, double turnAngle, boolean fieldOriented) {
     // Use addRequirements() here to declare subsystem dependencies.
     this.translation = translation;
-    this.turn = turnAngle;
-    this.currentHeading = Robot.drivetrain.getRealAngle();
-    this.deltaAngle = turnAngle - currentHeading;
+    this.turn = turnAngle;    
     this.fieldOriented = fieldOriented;
   }
 
@@ -41,13 +39,15 @@ public class AutoDrive extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if (deltaAngle > 180){
+     
+    deltaAngle = turn - Robot.drivetrain.getRealAngle();
+    if   (deltaAngle > 180){
       deltaAnglePostMath = ((deltaAngle - 360)/180);
     }
-    else if (deltaAngle < -180){
+     else if (deltaAngle < -180){
       deltaAnglePostMath = ((360 + deltaAngle)/180);
     }
-    else deltaAnglePostMath = (deltaAngle/180);
+     else deltaAnglePostMath = (deltaAngle/180);
 
     Robot.drivetrain.drive(translation, deltaAnglePostMath, fieldOriented);
   }

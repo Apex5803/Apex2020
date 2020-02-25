@@ -60,23 +60,24 @@ public class OI {
         TriggerButton OperatorRightTrigger = new TriggerButton(xbox2, 3);
         TriggerButton OperatorLeftJoystickY = new TriggerButton(xbox2, 1);
 
-        OperatorA.whenPressed(new ColorWheelPositionToggle());
-        OperatorB.whileHeld(new SpinWheelToColor());
-        OperatorX.whenPressed(new SpinWheelToPosition(24));
+        // OperatorA.whenPressed(new ColorWheelPositionToggle());
+        // OperatorB.whileHeld(new SpinWheelToColor());
+        // OperatorX.whenPressed(new SpinWheelToPosition(24));
         OperatorY.whileHeld(new FeedBalls());
         OperatorLeftJoystickY.whileActive(new MoveElevatorPercent());
         // OperatorDpadUp.whenPressed(new MoveElevatorPosition(ConfigValues.HighestClimbPosition));
         // OperatorDpadLeft.whenPressed(new MoveElevatorPosition(ConfigValues.LowestClimbPosition));
         // OperatorDpadRight.whenPressed(new MoveElevatorPosition(ConfigValues.MidClimbPosition));
         // OperatorDpadDown.whenPressed(new MoveElevatorPosition(ConfigValues.LowestElevatorPosition));
-        OperatorDpadDown.whenPressed(new RetractHood());
-        OperatorDpadUp.whenPressed(new ExtendHood());
+        OperatorDpadDown.whenPressed(new ExtendIntake());
+        OperatorDpadUp.whenPressed(new RetractIntake());
         OperatorDpadLeft.whenPressed(new RaiseElevator());
         OperatorDpadRight.whenPressed(new LowerElevator());
         // OperatorDpadUp.whenActive(new ExtendIntake());
         // OperatorDpadDown.whenActive(new RetractIntake());
-        OperatorStartButton.whenPressed(new LockElevator());
-        OperatorLBumper.whenPressed(new ToggleIntakePosition());
+        // OperatorStartButton.whenPressed(new LockElevator());
+        // OperatorLBumper.whenPressed(new UnlockElevator());
+        // OperatorLBumper.whenPressed(new ToggleIntakePosition());
         OperatorRBumper.whileHeld(new Shooter_Test());
         // OperatorBackButton.whenPressed(new RaiseElevator());
         // OperatorRStickClick.whenPressed(new LowerElevator());
@@ -84,10 +85,10 @@ public class OI {
         OperatorLeftTrigger.whileActive(new IntakeReverseStatic());
 
 
-        DriverB.whileHeld(new AlignToTarget());
-        DriverB.whileHeld(new LimelightShoot());
-        DriverX.whileHeld(new PursueBall());
-        DriverX.whileHeld( new IntakeForwardStatic());       
+        // DriverB.whileHeld(new AlignToTarget());
+        // DriverB.whileHeld(new LimelightShoot());
+        // DriverX.whileHeld(new PursueBall());
+        // DriverX.whileHeld( new IntakeForwardStatic());       
         DriverA.whenPressed(new ChangeControlScheme());    
         DriverDpadUp.whenPressed(new AutoDrive(new Translation2d(0, 0), 0, true));
         DriverDpadLeft.whenPressed(new AutoDrive(new Translation2d(0, 0), 90, true));

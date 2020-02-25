@@ -5,15 +5,15 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package com.swervedrivespecialties.exampleswerve.commands.IntakeCommands;
+package com.swervedrivespecialties.exampleswerve.commands.ShooterCommands;
 
 import com.swervedrivespecialties.exampleswerve.Robot;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Command;
 
-public class ToggleIntakePosition extends Command {
-  public ToggleIntakePosition() {
+public class ToggleHood extends Command {
+  public ToggleHood() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
   }
@@ -21,17 +21,16 @@ public class ToggleIntakePosition extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-   
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    if(Robot.intake.IntakeExtender.get() == Value.kForward){
-      Robot.intake.RetractIntake();
+    if (Robot.shooter.ShooterHood.get() == Value.kForward){
+      Robot.shooter.RetractHood();
     }
-    else if (Robot.intake.IntakeExtender.get() == Value.kReverse) {
-      Robot.intake.ExtendIntake();
+    else if(Robot.shooter.ShooterHood.get()== Value.kReverse){
+      Robot.shooter.ExtendHood();
     }
   }
 
@@ -50,6 +49,5 @@ public class ToggleIntakePosition extends Command {
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    end();
   }
 }
