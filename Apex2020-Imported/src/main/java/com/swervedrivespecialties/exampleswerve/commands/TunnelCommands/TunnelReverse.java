@@ -29,13 +29,15 @@ public class TunnelReverse extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    Robot.tunnel.runTunnel(ControlMode.PercentOutput, -0.25);
+    Robot.tunnel.runTunnel(ControlMode.PercentOutput, -0.50);
+    Robot.tunnel.tunnelUp();
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end() {
     Robot.tunnel.runTunnel(ControlMode.PercentOutput, 0.0);
+    Robot.tunnel.tunnelDown();
   }
   @Override
   protected void interrupted() {

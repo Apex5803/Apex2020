@@ -19,6 +19,7 @@ import com.ctre.phoenix.motorcontrol.can.VictorSPXConfiguration;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Shooter extends SubsystemBase {
@@ -39,9 +40,10 @@ public class Shooter extends SubsystemBase {
     Shooter1.config_kI(0, ConfigValues.Shooter_I);
     Shooter1.config_kD(0, ConfigValues.Shooter_D);
     Shooter1.config_kF(0, ConfigValues.Shooter_F);
-    Shooter1.configSupplyCurrentLimit(new SupplyCurrentLimitConfiguration(true, 30, 35, 0.2));
+    Shooter1.configSupplyCurrentLimit(new SupplyCurrentLimitConfiguration(true, 37, 38, 1));
     Shooter1.setInverted(true);
     Shooter2.setInverted(true);
+
 
 
   
@@ -52,6 +54,7 @@ public class Shooter extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
+    
   }
 
 public void Shoot(double RPMs){
@@ -59,8 +62,8 @@ public void Shoot(double RPMs){
 Shooter1.set(ControlMode.Velocity, Ticks_Per_100_MS);
 }
 
-public void TestShoot(double percent){
-Shooter1.set(ControlMode.PercentOutput, percent);
+public void TestShoot(double Ticks_Per_100_MS){
+Shooter1.set(ControlMode.PercentOutput, Ticks_Per_100_MS);
 }
 
 public void ExtendHood(){
@@ -69,6 +72,9 @@ public void ExtendHood(){
 
 public void RetractHood(){
   ShooterHood.set(Value.kReverse);
+}
+public double getRPMS(){
+  return Shooter1.getSelectedSensorVelocity() * 600 / 4096;
 }
 
 

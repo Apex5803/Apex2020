@@ -41,26 +41,28 @@ public class Limelight extends SubsystemBase {
     double ty = NetworkTableInstance.getDefault().getTable("limelight").getEntry("ty").getDouble(0);
     double ta = NetworkTableInstance.getDefault().getTable("limelight").getEntry("ta").getDouble(0);
 
-    if(tv == 0.0){
-      HasValidTarget = false;
-      SteerCommand = 0.0;
-      ShooterAngle = 0.0;
-    }
-    else{
+    if(tv == 1){
       HasValidTarget = true;
       ShooterAngle = ty;
       SteerCommand = tx / 29.8; //converts tx to steer comand between -1 and 1 so that its easier
-
+    }
+    else{
+      
+      HasValidTarget = false;
+      SteerCommand = 0.0;
+      ShooterAngle = 0.0;
     }
     
   }
   public double getSteerCommand(){
     UpdateLimelightTracking();
     return SteerCommand;
+    
   }
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
+    
   }
 
   public void enableLED(){

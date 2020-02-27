@@ -31,7 +31,7 @@ public class MoveElevatorPercent extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    Robot.elevator.moveElevatorPercent(.2 * Robot.oi.getXbox2().getY(Hand.kLeft)); //lets us set velocity percent where we call the command
+    Robot.elevator.moveElevatorPercent( Math.copySign( Math.pow(Robot.oi.getXbox2().getY(Hand.kLeft), 2.0 ) , Robot.oi.getXbox2().getY(Hand.kLeft))) ; //lets us set velocity percent where we call the command
   }
 
   // Called once the command ends or is interrupted.

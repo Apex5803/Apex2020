@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj.AnalogInput;
 // import edu.wpi.first.wpilibj.PWMTalonSRX;
 import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.SerialPort.Port;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.geometry.Rotation2d;
 import edu.wpi.first.wpilibj.geometry.Translation2d;
@@ -26,7 +27,7 @@ import org.frcteam2910.common.drivers.Gyroscope;
 import org.frcteam2910.common.drivers.SwerveModule;
 import org.frcteam2910.common.math.Vector2;
 import org.frcteam2910.common.robot.drivers.Mk2SwerveModuleBuilder;
-import org.frcteam2910.common.robot.drivers.NavX;
+import com.swervedrivespecialties.exampleswerve.Drivers.*;
 
 public class DrivetrainSubsystem extends Subsystem {
     private static final double TRACKWIDTH = 28.5;
@@ -89,11 +90,12 @@ public class DrivetrainSubsystem extends Subsystem {
             new Translation2d(-TRACKWIDTH / 2.0, -WHEELBASE / 2.0)
     );
 
-    public final Gyroscope gyroscope = new Pigeon(RobotMap.PigeonID);
+    public final Gyroscope gyroscope = new NavX(1);
 
     public DrivetrainSubsystem() {
         gyroscope.calibrate();      //TODO set inverted or not as necessary
         gyroscope.setInverted(true); // You might not need to invert the gyro 
+
 
         FrontLeftAngleMotor.configSupplyCurrentLimit(new SupplyCurrentLimitConfiguration(true, 30, 35, 0.2));
         FrontLeftAngleMotor.setNeutralMode(NeutralMode.Brake);

@@ -1,5 +1,6 @@
 package com.swervedrivespecialties.exampleswerve;
 
+import com.swervedrivespecialties.exampleswerve.commands.AutoCommands.MoveAwayFromDriverStation;
 import com.swervedrivespecialties.exampleswerve.commands.ShooterCommands.RetractHood;
 import com.swervedrivespecialties.exampleswerve.subsystems.*;
 import com.swervedrivespecialties.exampleswerve.utils.ColorChangeCounter;
@@ -56,6 +57,8 @@ public class Robot extends TimedRobot {
     @Override
     public void robotPeriodic() {
         Scheduler.getInstance().run();
+        SmartDashboard.putNumber("ShooterRPMS", shooter.getRPMS());
+       SmartDashboard.putNumber("SteerCommand", limelight.getSteerCommand());
     }
 
 
@@ -68,6 +71,7 @@ public class Robot extends TimedRobot {
     }
 
     public void autonomousInit(){
+        new MoveAwayFromDriverStation();
 
     }
 

@@ -29,7 +29,7 @@ public class IntakeReverseStatic extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    Robot.intake.RollIntake(ControlMode.PercentOutput, -0.4);
+    Robot.intake.RollIntake(ControlMode.PercentOutput, -0.70);
   }
 
   // Called once the command ends or is interrupted.

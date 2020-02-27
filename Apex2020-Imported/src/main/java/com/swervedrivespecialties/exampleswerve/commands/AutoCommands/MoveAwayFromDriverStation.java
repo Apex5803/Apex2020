@@ -34,7 +34,7 @@ public class MoveAwayFromDriverStation extends CommandGroup {
     // e.g. if Command1 requires chassis, and Command2 requires arm,
     // a CommandGroup containing them would require both the chassis and the
     // arm.
-    addParallel(new AutoDrive(new Translation2d(0,1), 180, true), 2.0);
+    addParallel(new AutoDrive(new Translation2d(1,0), 180, true), 2.0);
     addParallel(new ExtendIntake());
   }
 }

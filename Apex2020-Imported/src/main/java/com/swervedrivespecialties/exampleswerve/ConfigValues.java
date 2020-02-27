@@ -2,10 +2,10 @@ package com.swervedrivespecialties.exampleswerve;
 
 public class ConfigValues{
     //TODO PID Tuning
-    public static double Shooter_P = 0;
+    public static double Shooter_P = 10;
     public static double Shooter_I = 0;
     public static double Shooter_D = 0;
-    public static double Shooter_F = 0;
+    public static double Shooter_F = 100;
 
 
 
@@ -28,13 +28,13 @@ public class ConfigValues{
 
     public static double Spinner_Peak_Output = 1;
 
-    public static double Shooter_Test_Speed = .80;
+    public static double Shooter_Test_Speed = 4000;
 
     public static int colorWheelRPMS = 30;
 
     public static double pixyTargetScaleModifier = 2.0;
 
-    public static double XboxDriverLeftStickDeadband = 0.05;
+    public static double XboxDriverLeftStickDeadband = 0.10;
     public static int LowestClimbPositionLimiting = 490; //TODO Set these value after testing
     public static int HighestClimbPosition = 1500;
     public static int MidClimbPosition = 1000;
