@@ -70,10 +70,10 @@ public class OI {
         // OperatorDpadLeft.whenPressed(new MoveElevatorPosition(ConfigValues.LowestClimbPosition));
         // OperatorDpadRight.whenPressed(new MoveElevatorPosition(ConfigValues.MidClimbPosition));
         // OperatorDpadDown.whenPressed(new MoveElevatorPosition(ConfigValues.LowestElevatorPosition));
-        OperatorDpadDown.whenPressed(new ExtendIntake());
-        OperatorDpadUp.whenPressed(new RetractIntake());
-        OperatorDpadLeft.whenPressed(new RaiseElevator());
-        OperatorDpadRight.whenPressed(new LowerElevator());
+        OperatorDpadDown.whenPressed(new LowerElevator());
+        OperatorDpadUp.whenPressed(new RaiseElevator());
+        OperatorDpadLeft.whenPressed(new ExtendIntake());
+        OperatorDpadRight.whenPressed(new RetractIntake());
         // OperatorDpadUp.whenActive(new ExtendIntake());
         // OperatorDpadDown.whenActive(new RetractIntake());
         // OperatorStartButton.whenPressed(new LockElevator());
@@ -93,7 +93,7 @@ public class OI {
         // DriverB.whileHeld(new LimelightShoot());
         // DriverX.whileHeld(new PursueBall());
         // DriverX.whileHeld( new IntakeForwardStatic());       
-        DriverA.whenPressed(new ChangeControlScheme());    
+        // DriverA.whenPressed(new ChangeControlScheme());    
         // DriverDpadUp.whenPressed(new AutoDrive(new Translation2d(0, 0), 0, true));
         // DriverDpadLeft.whenPressed(new AutoDrive(new Translation2d(0, 0), 90, true));
         // DriverDpadRight.whenPressed(new AutoDrive(new Translation2d(0, 0), -90, true));

@@ -9,6 +9,7 @@ package com.swervedrivespecialties.exampleswerve.commands.ElevatorCommands;
 
 import com.swervedrivespecialties.exampleswerve.Robot;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class UnlockElevator extends Command {
@@ -31,7 +32,13 @@ public class UnlockElevator extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return false;
+    
+      if(Robot.elevator.ElevatorClimbLock.get() == Value.kForward){
+        return true;
+      }
+      else return false;
+    
+  
   }
 
   // Called once after isFinished returns true

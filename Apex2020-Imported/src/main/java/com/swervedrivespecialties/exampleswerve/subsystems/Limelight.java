@@ -41,7 +41,7 @@ public class Limelight extends SubsystemBase {
     double ty = NetworkTableInstance.getDefault().getTable("limelight").getEntry("ty").getDouble(0);
     double ta = NetworkTableInstance.getDefault().getTable("limelight").getEntry("ta").getDouble(0);
 
-    if(tv == 1){
+    if(tv == 1.0){
       HasValidTarget = true;
       ShooterAngle = ty;
       SteerCommand = tx / 29.8; //converts tx to steer comand between -1 and 1 so that its easier

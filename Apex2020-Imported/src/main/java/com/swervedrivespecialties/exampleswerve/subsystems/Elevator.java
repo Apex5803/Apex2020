@@ -14,6 +14,7 @@ import com.ctre.phoenix.motorcontrol.can.TalonFX;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import com.swervedrivespecialties.exampleswerve.ConfigValues;
+import com.swervedrivespecialties.exampleswerve.Robot;
 import com.swervedrivespecialties.exampleswerve.RobotMap;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
@@ -42,7 +43,7 @@ public int ButtonPressCount;
     Elevator1.config_kD(0, ConfigValues.Elevator_D);
     Elevator1.config_kF(0, ConfigValues.Elevator_F);
     Elevator1.setNeutralMode(NeutralMode.Brake);
-    Elevator1.configSupplyCurrentLimit(new SupplyCurrentLimitConfiguration(true, 30, 35, 0.2));
+    Elevator1.configSupplyCurrentLimit(new SupplyCurrentLimitConfiguration(true, 36, 39, 0.2));
     Elevator2.follow(Elevator1);
     ElevatorRotatorExtended = true;
     ColorWheelLockExtended = true;
@@ -83,16 +84,10 @@ public int ButtonPressCount;
   }
 
   public void moveElevatorPercent(double PercentOutput){
-    if(ClimbLockEngaged = true && PercentOutput > 0 && ElevatorRotatorExtended == true){
-      retractElevatorClimbLock();
-      Elevator1.set(ControlMode.PercentOutput, PercentOutput);
-    }
-    else if(ElevatorRotatorExtended == true && ClimbLockEngaged == false){
-      Elevator1.set(ControlMode.PercentOutput, PercentOutput);
-    }
-    else if(ElevatorRotatorExtended == false && PercentOutput <= 0){
-      Elevator1.set(ControlMode.PercentOutput, PercentOutput);
-    }
+  if (Robot.elevator.ElevatorRotator.get() == Value.kReverse){
+    Elevator1.set(ControlMode.PercentOutput, 1 * Math.abs(PercentOutput));
+  }
+  else Elevator1.set(ControlMode.PercentOutput, PercentOutput);
   
   }
 
@@ -107,14 +102,14 @@ public int ButtonPressCount;
   }
 
   public void extendElevatorClimbLock(){
-    if(getElevatorPosition > ConfigValues.LowestClimbPositionLimiting){
+    // if(getElevatorPosition > ConfigValues.LowestClimbPositionLimiting){
     ElevatorClimbLock.set(Value.kReverse);
-    ClimbLockEngaged = true;
-  }
+    // ClimbLockEngaged = true;
+  
 }
   public void retractElevatorClimbLock(){
     ElevatorClimbLock.set(Value.kForward);
-    ClimbLockEngaged = false;
+    // ClimbLockEngaged = false;
   }
 
   public int getElevatorPosition = Elevator1.getSelectedSensorPosition();

@@ -36,7 +36,7 @@ public class RobotMap {
 
 
     public static final int Elevator1 = 9;// CAN
-    public static final int Elevator2 = 10;// CAN
+    public static final int Elevator2 = 15;// CAN
     public static final int ElevatorRotator_ForwardChannel = 2; //PCM 2
     public static final int ElevatorRotator_ReverseChannel = 1; //PCM 2
     public static final int ElevatorClimbLock_ForwardChannel = 3; //PCM
