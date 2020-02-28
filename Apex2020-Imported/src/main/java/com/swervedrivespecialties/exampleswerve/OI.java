@@ -64,6 +64,7 @@ public class OI {
         // OperatorB.whileHeld(new SpinWheelToColor());
         // OperatorX.whenPressed(new SpinWheelToPosition(24));
         OperatorY.whileHeld(new FeedBalls());
+        OperatorX.whileHeld(new TunnelReverse());
         OperatorLeftJoystickY.whileActive(new MoveElevatorPercent());
         // OperatorDpadUp.whenPressed(new MoveElevatorPosition(ConfigValues.HighestClimbPosition));
         // OperatorDpadLeft.whenPressed(new MoveElevatorPosition(ConfigValues.LowestClimbPosition));
@@ -78,7 +79,9 @@ public class OI {
         // OperatorStartButton.whenPressed(new LockElevator());
         // OperatorLBumper.whenPressed(new UnlockElevator());
         // OperatorLBumper.whenPressed(new ToggleIntakePosition());
-        OperatorLBumper.whileHeld(new TunnelReverse());
+        // OperatorLBumper.whileHeld(new TunnelReverse());
+        OperatorA.whenPressed(new LockElevator());
+        OperatorB.whenPressed(new UnlockElevator());
         OperatorRBumper.whileHeld(new Shooter_Test());
         // OperatorBackButton.whenPressed(new RaiseElevator());
         // OperatorRStickClick.whenPressed(new LowerElevator());
@@ -91,10 +94,10 @@ public class OI {
         // DriverX.whileHeld(new PursueBall());
         // DriverX.whileHeld( new IntakeForwardStatic());       
         DriverA.whenPressed(new ChangeControlScheme());    
-        DriverDpadUp.whenPressed(new AutoDrive(new Translation2d(0, 0), 0, true));
-        DriverDpadLeft.whenPressed(new AutoDrive(new Translation2d(0, 0), 90, true));
-        DriverDpadRight.whenPressed(new AutoDrive(new Translation2d(0, 0), -90, true));
-        DriverDpadDown.whenPressed(new AutoDrive(new Translation2d(0, 0), 179.999999, true));
+        // DriverDpadUp.whenPressed(new AutoDrive(new Translation2d(0, 0), 0, true));
+        // DriverDpadLeft.whenPressed(new AutoDrive(new Translation2d(0, 0), 90, true));
+        // DriverDpadRight.whenPressed(new AutoDrive(new Translation2d(0, 0), -90, true));
+        // DriverDpadDown.whenPressed(new AutoDrive(new Translation2d(0, 0), 179.999999, true));
         while(Robot.intake.IntakeEnabledForDriver == true){
             DriverLBumper.whenPressed(new RetractIntake());
             DriverRBumper.whenPressed(new ExtendIntake());

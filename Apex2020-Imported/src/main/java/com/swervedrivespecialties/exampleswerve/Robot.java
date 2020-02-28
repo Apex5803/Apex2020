@@ -7,6 +7,7 @@ import com.swervedrivespecialties.exampleswerve.utils.ColorChangeCounter;
 import com.swervedrivespecialties.exampleswerve.utils.GameData;
 
 import edu.wpi.cscore.UsbCamera;
+import edu.wpi.cscore.VideoMode.PixelFormat;
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -46,24 +47,24 @@ public class Robot extends TimedRobot {
         pixyCam = PixyCam.getInstance();
         oi = new OI();
         UsbCamera camera1 = CameraServer.getInstance().startAutomaticCapture(0);
-        camera1.setResolution(160, 120);
+        camera1.setVideoMode(PixelFormat.kMJPEG, 160, 120, 20);// pixel format, x pixels, y pixels, FPS
 
         
         
         
-        limelight.enableLED();
+        // limelight.enableLED();
     }
 
     @Override
     public void robotPeriodic() {
         Scheduler.getInstance().run();
         SmartDashboard.putNumber("ShooterRPMS", shooter.getRPMS());
-       SmartDashboard.putNumber("SteerCommand", limelight.getSteerCommand());
+    //    SmartDashboard.putNumber("SteerCommand", limelight.getSteerCommand());
     }
 
 
     public void disabledInit(){
-        limelight.disableLED();
+        // limelight.disableLED();
     }
 
     public void disabledPeriodic(){
@@ -71,7 +72,7 @@ public class Robot extends TimedRobot {
     }
 
     public void autonomousInit(){
-        new MoveAwayFromDriverStation();
+        // new MoveAwayFromDriverStation();
 
     }
 
@@ -81,7 +82,7 @@ public class Robot extends TimedRobot {
 
     
     public void teleopInit(){
-        new RetractHood();
+        // new RetractHood();
         
     }
 

@@ -30,7 +30,7 @@ public class TunnelReverse extends Command {
   @Override
   public void execute() {
     Robot.tunnel.runTunnel(ControlMode.PercentOutput, -0.50);
-    Robot.tunnel.tunnelUp();
+    // Robot.tunnel.tunnelUp();
   }
 
   // Called once the command ends or is interrupted.
