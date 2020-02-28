@@ -7,22 +7,13 @@
 
 package com.swervedrivespecialties.exampleswerve.commands.AutoCommands;
 
-import com.swervedrivespecialties.exampleswerve.commands.DriveTrainCommands.AlignToTarget;
-import com.swervedrivespecialties.exampleswerve.commands.DriveTrainCommands.AutoRotate;
-import com.swervedrivespecialties.exampleswerve.commands.DriveTrainCommands.PursueBall;
-import com.swervedrivespecialties.exampleswerve.commands.IntakeCommands.ExtendIntake;
-import com.swervedrivespecialties.exampleswerve.commands.IntakeCommands.IntakeForwardStatic;
-import com.swervedrivespecialties.exampleswerve.commands.ShooterCommands.LimelightShoot;
-import com.swervedrivespecialties.exampleswerve.commands.TunnelCommands.TunnelForward;
-
 import edu.wpi.first.wpilibj.command.CommandGroup;
-import edu.wpi.first.wpilibj.geometry.Translation2d;
 
-public class ColectBallsThenShoot extends CommandGroup {
+public class NullCommand extends CommandGroup {
   /**
    * Add your docs here.
    */
-  public ColectBallsThenShoot() {
+  public NullCommand() {
     // Add Commands here:
     // e.g. addSequential(new Command1());
     // addSequential(new Command2());
@@ -38,15 +29,6 @@ public class ColectBallsThenShoot extends CommandGroup {
     // would require.
     // e.g. if Command1 requires chassis, and Command2 requires arm,
     // a CommandGroup containing them would require both the chassis and the
-    // arm. 
-    addParallel(new ExtendIntake());
-    addSequential(new AutoRotate(new Translation2d(0, 1), 0, false), 3.0);
-    addParallel(new PursueBall(), 7.0);
-    addSequential(new IntakeForwardStatic(), 7.0);
-    addParallel(new AlignToTarget(), 5.0);
-    addSequential(new LimelightShoot(), 2.0);
-    addParallel(new LimelightShoot(), 3.0);
-    addParallel(new TunnelForward(), 3.0);
-  
+    // arm.
   }
 }

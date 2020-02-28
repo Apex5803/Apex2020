@@ -1,5 +1,5 @@
 /*----------------------------------------------------------------------------*/
-/* Copyright (c) 2019 FIRST. All Rights Reserved.                             */
+/* Copyright (c) 2018 FIRST. All Rights Reserved.                             */
 /* Open Source Software - may be modified and shared by FRC teams. The code   */
 /* must be accompanied by the FIRST BSD license file in the root directory of */
 /* the project.                                                               */
@@ -11,35 +11,37 @@ import com.swervedrivespecialties.exampleswerve.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.geometry.Translation2d;
-
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class AutoDrive extends Command {
-  /**
-   * Creates a new AutoDrive.
-   */
   Translation2d translation;
-  double turn;
-  double currentHeading;
-  double deltaAngle;
-  double deltaAnglePostMath;
-  boolean fieldOriented;
-  
-  public AutoDrive(Translation2d translation, double turnAngle, boolean fieldOriented) {
+double turn;
+double currentHeading;
+double deltaAngle;
+double deltaAnglePostMath;
+boolean fieldOriented;
+double timeout;
+double CS_Count;
+  public AutoDrive(Translation2d translation, double turnAngle, boolean fieldOriented, double timeoutSeconds) {
     // Use addRequirements() here to declare subsystem dependencies.
+    CS_Count = 0;
     this.translation = translation;
     this.turn = turnAngle;    
     this.fieldOriented = fieldOriented;
+    this.timeout = timeoutSeconds * 100;
+
   }
 
-  // Called when the command is initially scheduled.
+
+  // Called just before this Command runs the first time
   @Override
-  public void initialize() {
+  protected void initialize() {
   }
 
-  // Called every time the scheduler runs while the command is scheduled.
+  // Called repeatedly when this Command is scheduled to run
   @Override
-  public void execute() {
-     
+  protected void execute() {
+       
     deltaAngle = turn - Robot.drivetrain.getRealAngle();
     if   (deltaAngle > 180){
       deltaAnglePostMath = ((deltaAngle - 360)/180);
@@ -48,25 +50,32 @@ public class AutoDrive extends Command {
       deltaAnglePostMath = ((360 + deltaAngle)/180);
     }
      else deltaAnglePostMath = (deltaAngle/180);
-
-    Robot.drivetrain.drive(translation, deltaAnglePostMath, fieldOriented);
+    CS_Count = CS_Count + 2;
+    if(CS_Count <= timeout){
+      Robot.drivetrain.drive(translation, deltaAnglePostMath, fieldOriented);
+     }
+     SmartDashboard.putNumber("TimeOut", timeout / 100);
+     SmartDashboard.putNumber("ElapsedSeconds", CS_Count / 100);
   }
 
-  // Called once the command ends or is interrupted.
+  // Make this return true when this Command no longer needs to run execute()
   @Override
-  public void end() {
+  protected boolean isFinished() {
+    if (this.CS_Count >= this.timeout){
+      return true;
+    }
+    else return false;
+  }
+
+  // Called once after isFinished returns true
+  @Override
+  protected void end() {
 
   }
+
+  // Called when another command which requires one or more of the same
+  // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    end();
-  }
-  // Returns true when the command should end.
-  @Override
-  public boolean isFinished() {
-if (Robot.drivetrain.gyroscope.getAngle().toDegrees() <= deltaAnglePostMath + 1 && Robot.drivetrain.gyroscope.getAngle().toDegrees() >= deltaAnglePostMath - 1 ){
-  return true;
-}
-    return false;
   }
 }

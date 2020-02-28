@@ -8,6 +8,8 @@
 package com.swervedrivespecialties.exampleswerve.commands.AutoCommands;
 
 import com.swervedrivespecialties.exampleswerve.commands.DriveTrainCommands.AutoDrive;
+import com.swervedrivespecialties.exampleswerve.commands.DriveTrainCommands.AutoRotate;
+import com.swervedrivespecialties.exampleswerve.commands.DriveTrainCommands.DriveCommand;
 import com.swervedrivespecialties.exampleswerve.commands.IntakeCommands.ExtendIntake;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
@@ -34,7 +36,8 @@ public class MoveAwayFromDriverStation extends CommandGroup {
     // e.g. if Command1 requires chassis, and Command2 requires arm,
     // a CommandGroup containing them would require both the chassis and the
     // arm.
-    addParallel(new AutoDrive(new Translation2d(1,0), 180, true), 2.0);
+    // addParallel(new AutoDrive(new Translation2d(1,0), 180, true), 5.0);
+    addParallel(new AutoDrive(new Translation2d(1, 0), 0.0, true, 2));
     addParallel(new ExtendIntake());
   }
 }

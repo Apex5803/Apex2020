@@ -8,7 +8,7 @@
 package com.swervedrivespecialties.exampleswerve.commands.AutoCommands;
 
 import com.swervedrivespecialties.exampleswerve.commands.DriveTrainCommands.AlignToTarget;
-import com.swervedrivespecialties.exampleswerve.commands.DriveTrainCommands.AutoDrive;
+import com.swervedrivespecialties.exampleswerve.commands.DriveTrainCommands.AutoRotate;
 import com.swervedrivespecialties.exampleswerve.commands.IntakeCommands.ExtendIntake;
 import com.swervedrivespecialties.exampleswerve.commands.ShooterCommands.LimelightShoot;
 import com.swervedrivespecialties.exampleswerve.commands.TunnelCommands.FeedBalls;
@@ -42,6 +42,6 @@ public class ShootBallsThenMove extends CommandGroup {
     addParallel(new LimelightShoot(), 6);
     addSequential(new FeedBalls(), 6);
     addParallel(new ExtendIntake());
-    addParallel(new AutoDrive(new Translation2d(0, 1), 0, true), 2);
+    addParallel(new AutoRotate(new Translation2d(0, 1), 0, true), 2);
   }
 }

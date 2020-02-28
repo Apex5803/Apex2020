@@ -1,6 +1,7 @@
 package com.swervedrivespecialties.exampleswerve;
 
 import com.swervedrivespecialties.exampleswerve.commands.AutoCommands.MoveAwayFromDriverStation;
+import com.swervedrivespecialties.exampleswerve.commands.AutoCommands.NullCommand;
 import com.swervedrivespecialties.exampleswerve.commands.ShooterCommands.RetractHood;
 import com.swervedrivespecialties.exampleswerve.subsystems.*;
 import com.swervedrivespecialties.exampleswerve.utils.ColorChangeCounter;
@@ -10,7 +11,9 @@ import edu.wpi.cscore.UsbCamera;
 import edu.wpi.cscore.VideoMode.PixelFormat;
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 // import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -29,6 +32,11 @@ public class Robot extends TimedRobot {
     public static Limelight limelight;
     public static PixyCam pixyCam;
 
+
+    Command m_AutonomousCommand;
+    SendableChooser<String> m_chooser = new SendableChooser<>();
+    String SelectedCommand;
+
     public static OI getOi() {
         return oi;
     }
@@ -46,10 +54,14 @@ public class Robot extends TimedRobot {
         limelight = Limelight.getInstance();
         pixyCam = PixyCam.getInstance();
         oi = new OI();
+
         UsbCamera camera1 = CameraServer.getInstance().startAutomaticCapture(0);
         camera1.setVideoMode(PixelFormat.kMJPEG, 160, 120, 20);// pixel format, x pixels, y pixels, FPS
 
-        
+        m_chooser.setDefaultOption("Null Command", "Null Command");
+        m_chooser.addOption("DriveFromLine", "DriveFromLine");
+        m_chooser.addOption("Null Command", "Null Command");
+        SmartDashboard.putData("Auto Mode", m_chooser);
         
         
         // limelight.enableLED();
@@ -72,8 +84,25 @@ public class Robot extends TimedRobot {
     }
 
     public void autonomousInit(){
-        
+        drivetrain.resetGyroscope();
+        elevator.RetractElevator();
+        intake.ExtendIntake();
+
+        String SelectedCommand = (String) m_chooser.getSelected();
+        switch(SelectedCommand){
+            case "Null Command":
+                m_AutonomousCommand = new NullCommand();
+                break;
+            case "DriveFromLine": 
+                m_AutonomousCommand = new MoveAwayFromDriverStation();
+                break;
+            default: 
+                m_AutonomousCommand = new NullCommand();
+             }
         // new MoveAwayFromDriverStation();
+        if (m_AutonomousCommand != null){
+            m_AutonomousCommand.start();
+        }
 
     }
 
