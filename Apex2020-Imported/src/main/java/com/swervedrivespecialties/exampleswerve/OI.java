@@ -83,6 +83,7 @@ public class OI {
         OperatorA.whenPressed(new LockElevator());
         OperatorB.whenPressed(new UnlockElevator());
         OperatorRBumper.whileHeld(new Shooter_Test());
+        OperatorLBumper.whileHeld(new ExtendHoodWhileHeld());
         // OperatorBackButton.whenPressed(new RaiseElevator());
         // OperatorRStickClick.whenPressed(new LowerElevator());
         OperatorRightTrigger.whileActive(new IntakeForwardStatic());
