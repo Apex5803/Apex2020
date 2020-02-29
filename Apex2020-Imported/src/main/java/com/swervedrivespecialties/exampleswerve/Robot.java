@@ -86,6 +86,7 @@ public class Robot extends TimedRobot {
 
     public void autonomousInit(){
         drivetrain.resetGyroscope();
+        // drivetrain.gyroscope.zeroYaw();
         elevator.RetractElevator();
         
 

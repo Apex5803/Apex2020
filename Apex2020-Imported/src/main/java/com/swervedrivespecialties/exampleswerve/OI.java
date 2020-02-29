@@ -28,9 +28,10 @@ public class OI {
 
     public OI() {
         // Back button zeroes the drivetrain
-        new JoystickButton(xbox1, 7).whenPressed(
-                new InstantCommand(() -> DrivetrainSubsystem.getInstance().resetGyroscope())
-        );
+        // new JoystickButton(xbox1, 7).whenPressed(
+        //         new InstantCommand(() ->Robot.drivetrain.resetGyroscope())
+        // );
+        Button DriverBack = new JoystickButton(xbox1, 7);
         POVTrigger DriverDpadUp = new POVTrigger(xbox1, 0, 0);
         POVTrigger DriverDpadLeft = new POVTrigger(xbox1, 0, 270);
         POVTrigger DriverDpadRight = new POVTrigger(xbox1, 0, 90);
@@ -99,6 +100,7 @@ public class OI {
         // DriverDpadLeft.whenPressed(new AutoDrive(new Translation2d(0, 0), 90, true));
         // DriverDpadRight.whenPressed(new AutoDrive(new Translation2d(0, 0), -90, true));
         // DriverDpadDown.whenPressed(new AutoDrive(new Translation2d(0, 0), 179.999999, true));
+        DriverBack.whenPressed(new ZeroGyro());
         while(Robot.intake.IntakeEnabledForDriver == true){
             DriverLBumper.whenPressed(new RetractIntake());
             DriverRBumper.whenPressed(new ExtendIntake());

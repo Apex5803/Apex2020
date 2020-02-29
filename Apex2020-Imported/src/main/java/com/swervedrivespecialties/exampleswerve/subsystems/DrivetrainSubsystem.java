@@ -33,10 +33,10 @@ public class DrivetrainSubsystem extends Subsystem {
     private static final double TRACKWIDTH = 28.5;
     private static final double WHEELBASE = 17.375;
 
-    private static final double FRONT_LEFT_ANGLE_OFFSET = -Math.toRadians(34.9);
-    private static final double FRONT_RIGHT_ANGLE_OFFSET = -Math.toRadians(223.3);
-    private static final double BACK_LEFT_ANGLE_OFFSET = -Math.toRadians(294.2);
-    private static final double BACK_RIGHT_ANGLE_OFFSET = -Math.toRadians(152.1);
+    private static final double FRONT_LEFT_ANGLE_OFFSET = -Math.toRadians(40.5);
+    private static final double FRONT_RIGHT_ANGLE_OFFSET = -Math.toRadians(128.5);
+    private static final double BACK_LEFT_ANGLE_OFFSET = -Math.toRadians(276.15);
+    private static final double BACK_RIGHT_ANGLE_OFFSET = -Math.toRadians(332.65);
     private TalonFX FrontLeftAngleMotor;
     private TalonFX FrontLeftDriveMotor;
     private TalonFX FrontRightAngleMotor;
@@ -101,7 +101,8 @@ public class DrivetrainSubsystem extends Subsystem {
         FrontLeftAngleMotor.setNeutralMode(NeutralMode.Brake);
         FrontLeftDriveMotor.configSupplyCurrentLimit(new SupplyCurrentLimitConfiguration(true, 30, 35, 0.2));
         FrontLeftDriveMotor.setNeutralMode(NeutralMode.Coast);
-        // FrontRightDriveMotor.setInverted(true);
+        FrontLeftDriveMotor.setInverted(false);
+        FrontRightDriveMotor.setInverted(true);
         FrontRightAngleMotor.configSupplyCurrentLimit(new SupplyCurrentLimitConfiguration(true, 30, 35, 0.2));
         FrontRightAngleMotor.setNeutralMode(NeutralMode.Brake);
         FrontRightDriveMotor.configSupplyCurrentLimit(new SupplyCurrentLimitConfiguration(true, 30, 35, 0.2));
@@ -110,9 +111,10 @@ public class DrivetrainSubsystem extends Subsystem {
         BackLeftAngleMotor.setNeutralMode(NeutralMode.Brake);
         BackLeftDriveMotor.configSupplyCurrentLimit(new SupplyCurrentLimitConfiguration(true, 30, 35, 0.2));
         BackLeftDriveMotor.setNeutralMode(NeutralMode.Coast);
+        BackLeftDriveMotor.setInverted(false);
         BackRightAngleMotor.configSupplyCurrentLimit(new SupplyCurrentLimitConfiguration(true, 30, 35, 0.2));
         BackRightAngleMotor.setNeutralMode(NeutralMode.Brake);
-        // BackRightDriveMotor.setInverted(true);
+        BackRightDriveMotor.setInverted(true);
         BackRightDriveMotor.configSupplyCurrentLimit(new SupplyCurrentLimitConfiguration(true, 30, 35, 0.2));
         BackRightDriveMotor.setNeutralMode(NeutralMode.Coast);
         frontLeftModule.setName("Front Left");

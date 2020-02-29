@@ -45,6 +45,8 @@ public int ButtonPressCount;
     Elevator1.setNeutralMode(NeutralMode.Brake);
     Elevator1.configSupplyCurrentLimit(new SupplyCurrentLimitConfiguration(true, 36, 39, 0.2));
     Elevator2.follow(Elevator1);
+    Elevator1.setInverted(true);
+    Elevator2.setInverted(true);
     ElevatorRotatorExtended = true;
     ColorWheelLockExtended = true;
     ClimbLockEngaged = false;
