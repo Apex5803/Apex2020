@@ -58,9 +58,10 @@ public class Robot extends TimedRobot {
         UsbCamera camera1 = CameraServer.getInstance().startAutomaticCapture(0);
         camera1.setVideoMode(PixelFormat.kMJPEG, 160, 120, 20);// pixel format, x pixels, y pixels, FPS
 
-        m_chooser.setDefaultOption("Null Command", "Null Command");
-        m_chooser.addOption("DriveFromLine", "DriveFromLine");
+        m_chooser.setDefaultOption("DriveFromLine", "DriveFromLine");
+        // m_chooser.addOption("DriveFromLine", "DriveFromLine");
         m_chooser.addOption("Null Command", "Null Command");
+        m_chooser.addOption("DriveFromLine", "DriveFromLine");
         SmartDashboard.putData("Auto Mode", m_chooser);
         
         
@@ -86,7 +87,7 @@ public class Robot extends TimedRobot {
     public void autonomousInit(){
         drivetrain.resetGyroscope();
         elevator.RetractElevator();
-        intake.ExtendIntake();
+        
 
         String SelectedCommand = (String) m_chooser.getSelected();
         switch(SelectedCommand){
@@ -97,7 +98,7 @@ public class Robot extends TimedRobot {
                 m_AutonomousCommand = new MoveAwayFromDriverStation();
                 break;
             default: 
-                m_AutonomousCommand = new NullCommand();
+                m_AutonomousCommand = new MoveAwayFromDriverStation();
              }
         // new MoveAwayFromDriverStation();
         if (m_AutonomousCommand != null){

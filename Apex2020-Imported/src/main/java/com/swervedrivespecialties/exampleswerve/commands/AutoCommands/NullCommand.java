@@ -7,6 +7,8 @@
 
 package com.swervedrivespecialties.exampleswerve.commands.AutoCommands;
 
+import com.swervedrivespecialties.exampleswerve.commands.IntakeCommands.ExtendIntake;
+
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 public class NullCommand extends CommandGroup {
@@ -30,5 +32,6 @@ public class NullCommand extends CommandGroup {
     // e.g. if Command1 requires chassis, and Command2 requires arm,
     // a CommandGroup containing them would require both the chassis and the
     // arm.
+    new ExtendIntake();
   }
 }
