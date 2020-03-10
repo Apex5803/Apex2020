@@ -40,7 +40,7 @@ public class AutoRotate extends Command {
   @Override
   public void execute() {
      
-    deltaAngle = turn - Robot.drivetrain.getRealAngle();
+    // deltaAngle = turn - Robot.drivetrain.getRealAngle();
     if   (deltaAngle > 180){
       deltaAnglePostMath = ((deltaAngle - 360)/180);
     }
@@ -49,7 +49,7 @@ public class AutoRotate extends Command {
     }
      else deltaAnglePostMath = (deltaAngle/180);
 
-    Robot.drivetrain.drive(translation, deltaAnglePostMath, fieldOriented);
+    // Robot.drivetrain.drive(translation, deltaAnglePostMath, fieldOriented);
   }
 
   // Called once the command ends or is interrupted.
@@ -64,9 +64,9 @@ public class AutoRotate extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-if (Robot.drivetrain.gyroscope.getAngle().toDegrees() <= deltaAnglePostMath + 1 && Robot.drivetrain.gyroscope.getAngle().toDegrees() >= deltaAnglePostMath - 1 ){
-  return true;
-}
+// if (Robot.drivetrain.gyroscope.getAngle().toDegrees() <= deltaAnglePostMath + 1 && Robot.drivetrain.gyroscope.getAngle().toDegrees() >= deltaAnglePostMath - 1 ){
+//   return true;
+// }
     return false;
   }
 }

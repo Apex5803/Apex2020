@@ -28,7 +28,7 @@ public class ConfigValues{
 
     public static double Spinner_Peak_Output = 1;
 
-    public static double Shooter_Test_Speed = 4000;
+    public static double Shooter_Test_Speed = 1.00;
 
     public static int colorWheelRPMS = 30;
 

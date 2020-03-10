@@ -25,7 +25,7 @@ public class RobotMap {
 
 
     public static final int Shooter1 = 13; //CAN
-    public static final int Shooter2 = 1;// CAN
+    public static final int Shooter2 = 14;// CAN
     public static final int ShooterHood_ForwardChannel = 3;
     public static final int ShooterHood_ReverseChannel = 0;
 

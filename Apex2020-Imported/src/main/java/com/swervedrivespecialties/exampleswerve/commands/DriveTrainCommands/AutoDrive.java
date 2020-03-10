@@ -42,7 +42,7 @@ double CS_Count;
   @Override
   protected void execute() {
        
-    deltaAngle = turn - Robot.drivetrain.getRealAngle();
+    // deltaAngle = turn - Robot.drivetrain.getRealAngle();
     if   (deltaAngle > 180){
       deltaAnglePostMath = ((deltaAngle - 360)/180);
     }
@@ -52,7 +52,7 @@ double CS_Count;
      else deltaAnglePostMath = (deltaAngle/180);
     CS_Count = CS_Count + 2;
     if(CS_Count <= timeout){
-      Robot.drivetrain.drive(translation, deltaAnglePostMath, fieldOriented);
+      // Robot.drivetrain.drive(translation, deltaAnglePostMath, fieldOriented);
      }
      SmartDashboard.putNumber("TimeOut", timeout / 100);
      SmartDashboard.putNumber("ElapsedSeconds", CS_Count / 100);

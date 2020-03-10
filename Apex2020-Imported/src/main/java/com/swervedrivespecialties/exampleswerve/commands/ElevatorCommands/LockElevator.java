@@ -32,10 +32,11 @@ public class LockElevator extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    if(Robot.elevator.ElevatorClimbLock.get() == Value.kReverse){
-      return true;
-    }
-    else return false;
+    // if(Robot.elevator.ElevatorClimbLock.get() == Value.kReverse){
+    //   return true;
+    // }
+    // else return false;
+    return false;
   }
 
   // Called once after isFinished returns true

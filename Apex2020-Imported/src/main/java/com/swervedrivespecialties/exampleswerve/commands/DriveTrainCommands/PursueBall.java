@@ -31,8 +31,8 @@ public class PursueBall extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-Robot.drivetrain.drive(new Translation2d(0, (1/(Robot.pixyCam.getTargetWidth() * ConfigValues.pixyTargetScaleModifier))),
-                   Robot.pixyCam.getProportionalX(), false);
+// Robot.drivetrain.drive(new Translation2d(0, (1/(Robot.pixyCam.getTargetWidth() * ConfigValues.pixyTargetScaleModifier))),
+                  //  Robot.pixyCam.getProportionalX(), false);
   }
 
   // Called once the command ends or is interrupted.

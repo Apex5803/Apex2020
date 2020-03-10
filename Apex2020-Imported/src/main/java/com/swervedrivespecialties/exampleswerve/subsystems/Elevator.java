@@ -25,12 +25,12 @@ public class Elevator extends SubsystemBase {
   /**
    * Creates a new Elevator.
    */
-TalonSRX Elevator1 = new TalonSRX(RobotMap.Elevator1);
-VictorSPX Elevator2 = new VictorSPX(RobotMap.Elevator2);
-public DoubleSolenoid ElevatorRotator = new DoubleSolenoid(RobotMap.PDP2ID, RobotMap.ElevatorRotator_ForwardChannel,RobotMap.ElevatorRotator_ReverseChannel);
-public DoubleSolenoid ColorWheelLock = new DoubleSolenoid(RobotMap.PDP1ID, RobotMap.ElevatorWheelPositionLock_ForwardChannel, RobotMap.ElevatorWheelPositionLock_ReverseChannel);
-public DoubleSolenoid ElevatorClimbLock = new DoubleSolenoid(RobotMap.PDP2ID, RobotMap.ElevatorClimbLock_ForwardChannel, RobotMap.ElevatorClimbLock_ReverseChannel);
-private static Elevator instance;
+// TalonSRX Elevator1 = new TalonSRX(RobotMap.Elevator1);
+// VictorSPX Elevator2 = new VictorSPX(RobotMap.Elevator2);
+// public DoubleSolenoid ElevatorRotator = new DoubleSolenoid(RobotMap.PDP2ID, RobotMap.ElevatorRotator_ForwardChannel,RobotMap.ElevatorRotator_ReverseChannel);
+// public DoubleSolenoid ColorWheelLock = new DoubleSolenoid(RobotMap.PDP1ID, RobotMap.ElevatorWheelPositionLock_ForwardChannel, RobotMap.ElevatorWheelPositionLock_ReverseChannel);
+// public DoubleSolenoid ElevatorClimbLock = new DoubleSolenoid(RobotMap.PDP2ID, RobotMap.ElevatorClimbLock_ForwardChannel, RobotMap.ElevatorClimbLock_ReverseChannel);
+// private static Elevator instance;
 public boolean ElevatorRotatorExtended;
 public boolean ColorWheelLockExtended;
 public boolean ClimbLockEngaged;
@@ -38,15 +38,15 @@ public boolean ClimbLockEngaged;
 public int ButtonPressCount;
 
   public Elevator() {
-    Elevator1.config_kP(0, ConfigValues.Elevator_P);
-    Elevator1.config_kI(0, ConfigValues.Elevator_I);
-    Elevator1.config_kD(0, ConfigValues.Elevator_D);
-    Elevator1.config_kF(0, ConfigValues.Elevator_F);
-    Elevator1.setNeutralMode(NeutralMode.Brake);
-    Elevator1.configSupplyCurrentLimit(new SupplyCurrentLimitConfiguration(true, 36, 39, 0.2));
-    Elevator2.follow(Elevator1);
-    Elevator1.setInverted(true);
-    Elevator2.setInverted(true);
+    // Elevator1.config_kP(0, ConfigValues.Elevator_P);
+    // Elevator1.config_kI(0, ConfigValues.Elevator_I);
+    // Elevator1.config_kD(0, ConfigValues.Elevator_D);
+    // Elevator1.config_kF(0, ConfigValues.Elevator_F);
+    // Elevator1.setNeutralMode(NeutralMode.Brake);
+    // Elevator1.configSupplyCurrentLimit(new SupplyCurrentLimitConfiguration(true, 36, 39, 0.2));
+    // Elevator2.follow(Elevator1);
+    // Elevator1.setInverted(true);
+    // Elevator2.setInverted(true);
     ElevatorRotatorExtended = true;
     ColorWheelLockExtended = true;
     ClimbLockEngaged = false;
@@ -61,71 +61,71 @@ public int ButtonPressCount;
 
 
   public void ExtendElevator(){
-    ElevatorRotator.set(Value.kForward);
+    // ElevatorRotator.set(Value.kForward);
     ElevatorRotatorExtended = true;
   }
 
   public void RetractElevator(){
-    ElevatorRotator.set(Value.kReverse);
+    // ElevatorRotator.set(Value.kReverse);
     ElevatorRotatorExtended = false;
   }
 
   public void moveElevatorPosition(int EncoderPosition){
-    if(ClimbLockEngaged = true &&  EncoderPosition > getElevatorPosition && ElevatorRotatorExtended == true){
-      retractElevatorClimbLock();
+    // if(ClimbLockEngaged = true &&  EncoderPosition > getElevatorPosition && ElevatorRotatorExtended == true){
+    //   retractElevatorClimbLock();
 
-      Elevator1.set(ControlMode.MotionMagic, EncoderPosition);
-    }
-    else if(ElevatorRotatorExtended == true && ClimbLockEngaged == false){
-      Elevator1.set(ControlMode.MotionMagic, EncoderPosition);
-    }
-    else if(ElevatorRotatorExtended == false && EncoderPosition <= getElevatorPosition){
-      Elevator1.set(ControlMode.MotionMagic, EncoderPosition);
+    //   // Elevator1.set(ControlMode.MotionMagic, EncoderPosition);
+    // }
+    // else if(ElevatorRotatorExtended == true && ClimbLockEngaged == false){
+    //   // Elevator1.set(ControlMode.MotionMagic, EncoderPosition);
+    // }
+    // else if(ElevatorRotatorExtended == false && EncoderPosition <= getElevatorPosition){
+      // Elevator1.set(ControlMode.MotionMagic, EncoderPosition);
     }
 
-  }
+  // }
 
   public void moveElevatorPercent(double PercentOutput){
-  if (Robot.elevator.ElevatorRotator.get() == Value.kReverse){
-    Elevator1.set(ControlMode.PercentOutput, 1 * Math.abs(PercentOutput));
-  }
-  else Elevator1.set(ControlMode.PercentOutput, PercentOutput);
+  // if (Robot.elevator.ElevatorRotator.get() == Value.kReverse){
+  //   Elevator1.set(ControlMode.PercentOutput, 1 * Math.abs(PercentOutput));
+  // }
+  // else Elevator1.set(ControlMode.PercentOutput, PercentOutput);
   
   }
 
 
   public void extendColorWheelLock(){
-    ColorWheelLock.set(Value.kForward);
-    ColorWheelLockExtended = true;
+    // ColorWheelLock.set(Value.kForward);
+    // ColorWheelLockExtended = true;
   }
   public void retractColorWheelLock(){
-    ColorWheelLock.set(Value.kReverse);
-    ColorWheelLockExtended = false;
+    // ColorWheelLock.set(Value.kReverse);
+    // ColorWheelLockExtended = false;
   }
 
   public void extendElevatorClimbLock(){
     // if(getElevatorPosition > ConfigValues.LowestClimbPositionLimiting){
-    ElevatorClimbLock.set(Value.kReverse);
+    // ElevatorClimbLock.set(Value.kReverse);
     // ClimbLockEngaged = true;
   
 }
   public void retractElevatorClimbLock(){
-    ElevatorClimbLock.set(Value.kForward);
+    // ElevatorClimbLock.set(Value.kForward);
     // ClimbLockEngaged = false;
   }
 
-  public int getElevatorPosition = Elevator1.getSelectedSensorPosition();
-  public int getElevatorVelocity = Elevator1.getSelectedSensorVelocity();
+  // public int getElevatorPosition = Elevator1.getSelectedSensorPosition();
+  // public int getElevatorVelocity = Elevator1.getSelectedSensorVelocity();
  
  
-  public static Elevator getInstance() {
-    if (instance == null) {
-        instance = new Elevator();
-    }
+  // public static Elevator getInstance() {
+  //   if (instance == null) {
+  //       instance = new Elevator();
+  //   }
 
-    return instance;
+  //   return instance;
 }
 
 
 
-}
+// }

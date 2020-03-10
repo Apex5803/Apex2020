@@ -33,10 +33,11 @@ public class UnlockElevator extends Command {
   @Override
   protected boolean isFinished() {
     
-      if(Robot.elevator.ElevatorClimbLock.get() == Value.kForward){
-        return true;
-      }
-      else return false;
+      // if(Robot.elevator.ElevatorClimbLock.get() == Value.kForward){
+      //   return true;
+      // }
+      // else return false;
+      return true;
     
   
   }

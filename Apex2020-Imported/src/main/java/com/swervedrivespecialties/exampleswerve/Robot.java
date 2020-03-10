@@ -21,7 +21,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class Robot extends TimedRobot {
     public static OI oi;
 
-    public static DrivetrainSubsystem drivetrain;
+    // public static DrivetrainSubsystem drivetrain;
     public static Intake intake;
     public static Shooter shooter;
     public static Tunnel tunnel;
@@ -43,16 +43,16 @@ public class Robot extends TimedRobot {
 
     @Override
     public void robotInit() {
-        drivetrain = DrivetrainSubsystem.getInstance();
+        // drivetrain = DrivetrainSubsystem.getInstance();
         intake = Intake.getInstance();
         shooter = Shooter.getInstance();
         tunnel = Tunnel.getInstance();
-        elevator = Elevator.getInstance();
+        // elevator = Elevator.getInstance();
         gameData = GameData.getInstance();
         // colorChangeCounter = ColorChangeCounter.getInstance();
         // colorWheel = ColorWheel.getInstance();
-        limelight = Limelight.getInstance();
-        pixyCam = PixyCam.getInstance();
+        // limelight = Limelight.getInstance();
+        // pixyCam = PixyCam.getInstance();
         oi = new OI();
 
         UsbCamera camera1 = CameraServer.getInstance().startAutomaticCapture(0);
@@ -85,9 +85,9 @@ public class Robot extends TimedRobot {
     }
 
     public void autonomousInit(){
-        drivetrain.resetGyroscope();
+        // drivetrain.resetGyroscope();
         // drivetrain.gyroscope.zeroYaw();
-        elevator.RetractElevator();
+        // elevator.RetractElevator();
         
 
         String SelectedCommand = (String) m_chooser.getSelected();

@@ -10,6 +10,7 @@ package com.swervedrivespecialties.exampleswerve.subsystems;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.SupplyCurrentLimitConfiguration;
+import com.ctre.phoenix.motorcontrol.can.TalonFX;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import com.swervedrivespecialties.exampleswerve.ConfigValues;
@@ -27,21 +28,22 @@ public class Shooter extends SubsystemBase {
    * Creates a new Shooter.
    */
   private static Shooter instance;
-  TalonSRX Shooter1 = new TalonSRX(RobotMap.Shooter1);
-  VictorSPX Shooter2 = new VictorSPX(RobotMap.Shooter2);
+  TalonFX Shooter1 = new TalonFX(RobotMap.Shooter1);
+  TalonFX Shooter2 = new TalonFX(RobotMap.Shooter2);
   public DoubleSolenoid ShooterHood = new DoubleSolenoid(RobotMap.PDP1ID, RobotMap.ShooterHood_ForwardChannel, RobotMap.ShooterHood_ReverseChannel);
   
   
  
   public Shooter() {
-    Shooter1.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative);
+    // Shooter1.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative);
+    Shooter1.configSelectedFeedbackSensor(FeedbackDevice.IntegratedSensor);
     Shooter2.follow(Shooter1);
     Shooter1.config_kP(0, ConfigValues.Shooter_P);
     Shooter1.config_kI(0, ConfigValues.Shooter_I);
     Shooter1.config_kD(0, ConfigValues.Shooter_D);
     Shooter1.config_kF(0, ConfigValues.Shooter_F);
     Shooter1.configSupplyCurrentLimit(new SupplyCurrentLimitConfiguration(true, 37, 38, 1));
-    Shooter1.setInverted(true);
+    Shooter1.setInverted(false);
     Shooter2.setInverted(true);
 
 
@@ -74,7 +76,7 @@ public void RetractHood(){
   ShooterHood.set(Value.kReverse);
 }
 public double getRPMS(){
-  return Shooter1.getSelectedSensorVelocity() * 600 / 4096;
+  return Shooter1.getSelectedSensorVelocity() * 600 / 2048;
 }
 
 

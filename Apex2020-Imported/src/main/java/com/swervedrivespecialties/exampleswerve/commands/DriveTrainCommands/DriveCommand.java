@@ -13,7 +13,7 @@ import org.frcteam2910.common.robot.Utilities;
 public class DriveCommand extends Command {
 
     public DriveCommand() {
-        requires(DrivetrainSubsystem.getInstance());
+        // requires(DrivetrainSubsystem.getInstance());
     }
 
     @Override
@@ -36,7 +36,7 @@ public class DriveCommand extends Command {
         rotation = Math.copySign(Math.pow(rotation, 2.0), rotation);
 
         // DrivetrainSubsystem.getInstance().drive(new Translation2d(forward, strafe), rotation, Robot.drivetrain.fieldOriented);
-         DrivetrainSubsystem.getInstance().drive(new Translation2d(forward, strafe), rotation, true);
+        //  DrivetrainSubsystem.getInstance().drive(new Translation2d(forward, strafe), rotation, true);
     }
 
     @Override

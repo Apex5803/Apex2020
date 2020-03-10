@@ -20,10 +20,10 @@ public class ChangeControlScheme extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    if(Robot.drivetrain.fieldOriented){
-      Robot.drivetrain.fieldOriented = false;
-    }
-    else Robot.drivetrain.fieldOriented = true;
+    // if(Robot.drivetrain.fieldOriented){
+    //   Robot.drivetrain.fieldOriented = false;
+    // }
+    // else Robot.drivetrain.fieldOriented = true;
     
     
   }

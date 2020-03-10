@@ -38,13 +38,13 @@ public class Tunnel extends SubsystemBase {
     // Tunnel1.config_kI(0, PIDVConfigValuesalues.Tunnel_I);
     // Tunnel1.config_kD(0, ConfigValues.Tunnel_D);
     // Tunnel1.config_kF(0, ConfigValues.Tunnel_F);
-    Tunnel1.setNeutralMode(NeutralMode.Brake);
-    Tunnel1.setInverted(true);
+    // Tunnel1.setNeutralMode(NeutralMode.Brake);
+    // Tunnel1.setInverted(true);
     // Tunnel1.configSupplyCurrentLimit(new SupplyCurrentLimitConfiguration(true, 15, 20, 0.2));
   }
 
 public void runTunnel(ControlMode controlmode, double speed){
-    Tunnel1.set(controlmode, speed);
+    // Tunnel1.set(controlmode, speed);
 }
 
 public void tunnelUp(){
