@@ -2,7 +2,7 @@ package com.swervedrivespecialties.exampleswerve;
 
 public class ConfigValues{
     //TODO PID Tuning
-    public static double Shooter_P = 1.0;
+    public static double Shooter_P = .8;
     public static double Shooter_I = 0.0;
     public static double Shooter_D = 14.0;
     public static double Shooter_F = 0.05;
