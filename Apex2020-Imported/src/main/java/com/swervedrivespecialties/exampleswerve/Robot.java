@@ -21,7 +21,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class Robot extends TimedRobot {
     public static OI oi;
 
-    // public static DrivetrainSubsystem drivetrain;
+    public static DrivetrainSubsystem drivetrain;
     public static Intake intake;
     public static Shooter shooter;
     public static Tunnel tunnel;
@@ -43,7 +43,7 @@ public class Robot extends TimedRobot {
 
     @Override
     public void robotInit() {
-        // drivetrain = DrivetrainSubsystem.getInstance();
+        drivetrain = DrivetrainSubsystem.getInstance();
         intake = Intake.getInstance();
         shooter = Shooter.getInstance();
         tunnel = Tunnel.getInstance();

@@ -45,7 +45,7 @@ public class AlignToTarget extends Command {
     // // Square the rotation stick
     // rotation = Math.copySign(Math.pow(rotation, 2.0), rotation);
 
-    // Robot.drivetrain.drive(new Translation2d(forward, strafe), rotation, Robot.drivetrain.fieldOriented);
+    Robot.drivetrain.drive(new Translation2d(forward, strafe), rotation, Robot.drivetrain.fieldOriented);
   }
 
   // Called once the command ends or is interrupted.

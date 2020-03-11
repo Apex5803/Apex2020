@@ -29,14 +29,16 @@ public class Shooter_Test extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    Robot.shooter.TestShoot(ConfigValues.Shooter_Test_Speed);
+    // Robot.shooter.TestShoot(1.0);
+    Robot.shooter.Shoot(5500.0);
  
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end() {
-    Robot.shooter.TestShoot(0.0);
+    // Robot.shooter.TestShoot(0.0);
+    Robot.shooter.Shoot(2000);
   }
   @Override
   protected void interrupted() {

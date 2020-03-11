@@ -33,10 +33,10 @@ public class DrivetrainSubsystem extends Subsystem {
     private static final double TRACKWIDTH = 28.5;
     private static final double WHEELBASE = 17.375;
 
-    private static final double FRONT_LEFT_ANGLE_OFFSET = -Math.toRadians(40.5);
-    private static final double FRONT_RIGHT_ANGLE_OFFSET = -Math.toRadians(128.5);
-    private static final double BACK_LEFT_ANGLE_OFFSET = -Math.toRadians(276.15);
-    private static final double BACK_RIGHT_ANGLE_OFFSET = -Math.toRadians(332.65);
+    private static final double FRONT_LEFT_ANGLE_OFFSET = -Math.toRadians(274.6);
+    private static final double FRONT_RIGHT_ANGLE_OFFSET = -Math.toRadians(255.82);
+    private static final double BACK_LEFT_ANGLE_OFFSET = -Math.toRadians(111.6);
+    private static final double BACK_RIGHT_ANGLE_OFFSET = -Math.toRadians(152.6);
     private TalonFX FrontLeftAngleMotor;
     private TalonFX FrontLeftDriveMotor;
     private TalonFX FrontRightAngleMotor;
@@ -47,138 +47,138 @@ public class DrivetrainSubsystem extends Subsystem {
     private TalonFX BackRightDriveMotor;
 
 
-    // private static DrivetrainSubsystem instance;
+    private static DrivetrainSubsystem instance;
     public boolean fieldOriented;
 
-    // private final SwerveModule frontLeftModule = new Mk2SwerveModuleBuilder(
-    //         new Vector2(TRACKWIDTH / 2.0, WHEELBASE / 2.0))
-    //         .angleEncoder(new AnalogInput(RobotMap.DRIVETRAIN_FRONT_LEFT_ANGLE_ENCODER), FRONT_LEFT_ANGLE_OFFSET)
-    //         .angleMotor(FrontLeftAngleMotor = new TalonFX(RobotMap.DRIVETRAIN_FRONT_LEFT_ANGLE_MOTOR)
-    //                 )
-    //         .driveMotor(FrontLeftDriveMotor = new TalonFX(RobotMap.DRIVETRAIN_FRONT_LEFT_DRIVE_MOTOR)
-    //          )
-    //         .build();
-    // private final SwerveModule frontRightModule = new Mk2SwerveModuleBuilder(
-    //         new Vector2(TRACKWIDTH / 2.0, -WHEELBASE / 2.0))
-    //         .angleEncoder(new AnalogInput(RobotMap.DRIVETRAIN_FRONT_RIGHT_ANGLE_ENCODER), FRONT_RIGHT_ANGLE_OFFSET)
-    //         .angleMotor(FrontRightAngleMotor = new TalonFX(RobotMap.DRIVETRAIN_FRONT_RIGHT_ANGLE_MOTOR)
-    //         )
-    //         .driveMotor(FrontRightDriveMotor = new TalonFX(RobotMap.DRIVETRAIN_FRONT_RIGHT_DRIVE_MOTOR)
-    //         )
-    //         .build();
-    // private final SwerveModule backLeftModule = new Mk2SwerveModuleBuilder(
-    //         new Vector2(-TRACKWIDTH / 2.0, WHEELBASE / 2.0))
-    //         .angleEncoder(new AnalogInput(RobotMap.DRIVETRAIN_BACK_LEFT_ANGLE_ENCODER), BACK_LEFT_ANGLE_OFFSET)
-    //         .angleMotor(BackLeftAngleMotor = new TalonFX(RobotMap.DRIVETRAIN_BACK_LEFT_ANGLE_MOTOR)
-    //         )
-    //         .driveMotor(BackLeftDriveMotor = new TalonFX(RobotMap.DRIVETRAIN_BACK_LEFT_DRIVE_MOTOR)
-    //         )
-    //         .build();
-    // private final SwerveModule backRightModule = new Mk2SwerveModuleBuilder(
-    //         new Vector2(-TRACKWIDTH / 2.0, -WHEELBASE / 2.0))
-    //         .angleEncoder(new AnalogInput(RobotMap.DRIVETRAIN_BACK_RIGHT_ANGLE_ENCODER), BACK_RIGHT_ANGLE_OFFSET)
-    //         .angleMotor(BackRightAngleMotor = new TalonFX(RobotMap.DRIVETRAIN_BACK_RIGHT_ANGLE_MOTOR)
-    //         )
-    //         .driveMotor(BackRightDriveMotor = new TalonFX(RobotMap.DRIVETRAIN_BACK_RIGHT_DRIVE_MOTOR)
-    //         )
-    //         .build();
+    private final SwerveModule frontLeftModule = new Mk2SwerveModuleBuilder(
+            new Vector2(TRACKWIDTH / 2.0, WHEELBASE / 2.0))
+            .angleEncoder(new AnalogInput(RobotMap.DRIVETRAIN_FRONT_LEFT_ANGLE_ENCODER), FRONT_LEFT_ANGLE_OFFSET)
+            .angleMotor(FrontLeftAngleMotor = new TalonFX(RobotMap.DRIVETRAIN_FRONT_LEFT_ANGLE_MOTOR)
+                    )
+            .driveMotor(FrontLeftDriveMotor = new TalonFX(RobotMap.DRIVETRAIN_FRONT_LEFT_DRIVE_MOTOR)
+             )
+            .build();
+    private final SwerveModule frontRightModule = new Mk2SwerveModuleBuilder(
+            new Vector2(TRACKWIDTH / 2.0, -WHEELBASE / 2.0))
+            .angleEncoder(new AnalogInput(RobotMap.DRIVETRAIN_FRONT_RIGHT_ANGLE_ENCODER), FRONT_RIGHT_ANGLE_OFFSET)
+            .angleMotor(FrontRightAngleMotor = new TalonFX(RobotMap.DRIVETRAIN_FRONT_RIGHT_ANGLE_MOTOR)
+            )
+            .driveMotor(FrontRightDriveMotor = new TalonFX(RobotMap.DRIVETRAIN_FRONT_RIGHT_DRIVE_MOTOR)
+            )
+            .build();
+    private final SwerveModule backLeftModule = new Mk2SwerveModuleBuilder(
+            new Vector2(-TRACKWIDTH / 2.0, WHEELBASE / 2.0))
+            .angleEncoder(new AnalogInput(RobotMap.DRIVETRAIN_BACK_LEFT_ANGLE_ENCODER), BACK_LEFT_ANGLE_OFFSET)
+            .angleMotor(BackLeftAngleMotor = new TalonFX(RobotMap.DRIVETRAIN_BACK_LEFT_ANGLE_MOTOR)
+            )
+            .driveMotor(BackLeftDriveMotor = new TalonFX(RobotMap.DRIVETRAIN_BACK_LEFT_DRIVE_MOTOR)
+            )
+            .build();
+    private final SwerveModule backRightModule = new Mk2SwerveModuleBuilder(
+            new Vector2(-TRACKWIDTH / 2.0, -WHEELBASE / 2.0))
+            .angleEncoder(new AnalogInput(RobotMap.DRIVETRAIN_BACK_RIGHT_ANGLE_ENCODER), BACK_RIGHT_ANGLE_OFFSET)
+            .angleMotor(BackRightAngleMotor = new TalonFX(RobotMap.DRIVETRAIN_BACK_RIGHT_ANGLE_MOTOR)
+            )
+            .driveMotor(BackRightDriveMotor = new TalonFX(RobotMap.DRIVETRAIN_BACK_RIGHT_DRIVE_MOTOR)
+            )
+            .build();
 
-    // private final SwerveDriveKinematics kinematics = new SwerveDriveKinematics(
-    //         new Translation2d(TRACKWIDTH / 2.0, WHEELBASE / 2.0),
-    //         new Translation2d(TRACKWIDTH / 2.0, -WHEELBASE / 2.0),
-    //         new Translation2d(-TRACKWIDTH / 2.0, WHEELBASE / 2.0),
-    //         new Translation2d(-TRACKWIDTH / 2.0, -WHEELBASE / 2.0)
-    // );
+    private final SwerveDriveKinematics kinematics = new SwerveDriveKinematics(
+            new Translation2d(TRACKWIDTH / 2.0, WHEELBASE / 2.0),
+            new Translation2d(TRACKWIDTH / 2.0, -WHEELBASE / 2.0),
+            new Translation2d(-TRACKWIDTH / 2.0, WHEELBASE / 2.0),
+            new Translation2d(-TRACKWIDTH / 2.0, -WHEELBASE / 2.0)
+    );
 
-    // public final Gyroscope gyroscope = new NavX(1);
+    public final Gyroscope gyroscope = new NavX(1);
 
-    public DrivetrainSubsystem() {}
-    //     gyroscope.calibrate();      //TODO set inverted or not as necessary
-    //     gyroscope.setInverted(true); // You might not need to invert the gyro 
+    public DrivetrainSubsystem() {
+        gyroscope.calibrate();      //TODO set inverted or not as necessary
+        gyroscope.setInverted(true); // You might not need to invert the gyro 
 
 
-    //     FrontLeftAngleMotor.configSupplyCurrentLimit(new SupplyCurrentLimitConfiguration(true, 30, 35, 0.2));
-    //     FrontLeftAngleMotor.setNeutralMode(NeutralMode.Brake);
-    //     FrontLeftDriveMotor.configSupplyCurrentLimit(new SupplyCurrentLimitConfiguration(true, 30, 35, 0.2));
-    //     FrontLeftDriveMotor.setNeutralMode(NeutralMode.Coast);
-    //     FrontLeftDriveMotor.setInverted(false);
-    //     FrontRightDriveMotor.setInverted(true);
-    //     FrontRightAngleMotor.configSupplyCurrentLimit(new SupplyCurrentLimitConfiguration(true, 30, 35, 0.2));
-    //     FrontRightAngleMotor.setNeutralMode(NeutralMode.Brake);
-    //     FrontRightDriveMotor.configSupplyCurrentLimit(new SupplyCurrentLimitConfiguration(true, 30, 35, 0.2));
-    //     FrontRightDriveMotor.setNeutralMode(NeutralMode.Coast);
-    //     BackLeftAngleMotor.configSupplyCurrentLimit(new SupplyCurrentLimitConfiguration(true, 30, 35, 0.2));
-    //     BackLeftAngleMotor.setNeutralMode(NeutralMode.Brake);
-    //     BackLeftDriveMotor.configSupplyCurrentLimit(new SupplyCurrentLimitConfiguration(true, 30, 35, 0.2));
-    //     BackLeftDriveMotor.setNeutralMode(NeutralMode.Coast);
-    //     BackLeftDriveMotor.setInverted(false);
-    //     BackRightAngleMotor.configSupplyCurrentLimit(new SupplyCurrentLimitConfiguration(true, 30, 35, 0.2));
-    //     BackRightAngleMotor.setNeutralMode(NeutralMode.Brake);
-    //     BackRightDriveMotor.setInverted(true);
-    //     BackRightDriveMotor.configSupplyCurrentLimit(new SupplyCurrentLimitConfiguration(true, 30, 35, 0.2));
-    //     BackRightDriveMotor.setNeutralMode(NeutralMode.Coast);
-    //     frontLeftModule.setName("Front Left");
-    //     frontRightModule.setName("Front Right");
-    //     backLeftModule.setName("Back Left");
-    //     backRightModule.setName("Back Right");
-    //     fieldOriented = true;
-    // }
+        FrontLeftAngleMotor.configSupplyCurrentLimit(new SupplyCurrentLimitConfiguration(true, 30, 35, 0.2));
+        FrontLeftAngleMotor.setNeutralMode(NeutralMode.Brake);
+        FrontLeftDriveMotor.configSupplyCurrentLimit(new SupplyCurrentLimitConfiguration(true, 30, 35, 0.2));
+        FrontLeftDriveMotor.setNeutralMode(NeutralMode.Coast);
+        FrontLeftDriveMotor.setInverted(false);
+        FrontRightDriveMotor.setInverted(true);
+        FrontRightAngleMotor.configSupplyCurrentLimit(new SupplyCurrentLimitConfiguration(true, 30, 35, 0.2));
+        FrontRightAngleMotor.setNeutralMode(NeutralMode.Brake);
+        FrontRightDriveMotor.configSupplyCurrentLimit(new SupplyCurrentLimitConfiguration(true, 30, 35, 0.2));
+        FrontRightDriveMotor.setNeutralMode(NeutralMode.Coast);
+        BackLeftAngleMotor.configSupplyCurrentLimit(new SupplyCurrentLimitConfiguration(true, 30, 35, 0.2));
+        BackLeftAngleMotor.setNeutralMode(NeutralMode.Brake);
+        BackLeftDriveMotor.configSupplyCurrentLimit(new SupplyCurrentLimitConfiguration(true, 30, 35, 0.2));
+        BackLeftDriveMotor.setNeutralMode(NeutralMode.Coast);
+        BackLeftDriveMotor.setInverted(false);
+        BackRightAngleMotor.configSupplyCurrentLimit(new SupplyCurrentLimitConfiguration(true, 30, 35, 0.2));
+        BackRightAngleMotor.setNeutralMode(NeutralMode.Brake);
+        BackRightDriveMotor.setInverted(true);
+        BackRightDriveMotor.configSupplyCurrentLimit(new SupplyCurrentLimitConfiguration(true, 30, 35, 0.2));
+        BackRightDriveMotor.setNeutralMode(NeutralMode.Coast);
+        frontLeftModule.setName("Front Left");
+        frontRightModule.setName("Front Right");
+        backLeftModule.setName("Back Left");
+        backRightModule.setName("Back Right");
+        fieldOriented = true;
+    }
 
-    // public static DrivetrainSubsystem getInstance() {
-    //     if (instance == null) {
-    //         instance = new DrivetrainSubsystem();
-    //     }
+    public static DrivetrainSubsystem getInstance() {
+        if (instance == null) {
+            instance = new DrivetrainSubsystem();
+        }
 
-    //     return instance;
-    // }
+        return instance;
+    }
 
-    // @Override
-    // public void periodic() {
-    //     frontLeftModule.updateSensors();
-    //     frontRightModule.updateSensors();
-    //     backLeftModule.updateSensors();
-    //     backRightModule.updateSensors();
+    @Override
+    public void periodic() {
+        frontLeftModule.updateSensors();
+        frontRightModule.updateSensors();
+        backLeftModule.updateSensors();
+        backRightModule.updateSensors();
 
-    //     SmartDashboard.putNumber("Front Left Module Angle", Math.toDegrees(frontLeftModule.getCurrentAngle()));
-    //     SmartDashboard.putNumber("Front Right Module Angle", Math.toDegrees(frontRightModule.getCurrentAngle()));
-    //     SmartDashboard.putNumber("Back Left Module Angle", Math.toDegrees(backLeftModule.getCurrentAngle()));
-    //     SmartDashboard.putNumber("Back Right Module Angle", Math.toDegrees(backRightModule.getCurrentAngle()));
+        SmartDashboard.putNumber("Front Left Module Angle", Math.toDegrees(frontLeftModule.getCurrentAngle()));
+        SmartDashboard.putNumber("Front Right Module Angle", Math.toDegrees(frontRightModule.getCurrentAngle()));
+        SmartDashboard.putNumber("Back Left Module Angle", Math.toDegrees(backLeftModule.getCurrentAngle()));
+        SmartDashboard.putNumber("Back Right Module Angle", Math.toDegrees(backRightModule.getCurrentAngle()));
 
-    //     SmartDashboard.putNumber("Gyroscope Angle", gyroscope.getAngle().toDegrees());
+        SmartDashboard.putNumber("Gyroscope Angle", gyroscope.getAngle().toDegrees());
 
-    //     frontLeftModule.updateState(TimedRobot.kDefaultPeriod);
-    //     frontRightModule.updateState(TimedRobot.kDefaultPeriod);
-    //     backLeftModule.updateState(TimedRobot.kDefaultPeriod);
-    //     backRightModule.updateState(TimedRobot.kDefaultPeriod);
-    // }
+        frontLeftModule.updateState(TimedRobot.kDefaultPeriod);
+        frontRightModule.updateState(TimedRobot.kDefaultPeriod);
+        backLeftModule.updateState(TimedRobot.kDefaultPeriod);
+        backRightModule.updateState(TimedRobot.kDefaultPeriod);
+    }
 
-    // public void drive(Translation2d translation, double rotation, boolean fieldOriented) {
-    //     rotation *= 2.0 / Math.hypot(WHEELBASE, TRACKWIDTH);
-    //     ChassisSpeeds speeds;
-    //     if (fieldOriented) {
-    //         speeds = ChassisSpeeds.fromFieldRelativeSpeeds(translation.getX(), translation.getY(), rotation,
-    //                 Rotation2d.fromDegrees(gyroscope.getAngle().toDegrees()));
-    //     } else {
-    //         speeds = new ChassisSpeeds(translation.getX(), translation.getY(), rotation);
-    //     }
+    public void drive(Translation2d translation, double rotation, boolean fieldOriented) {
+        rotation *= 2.0 / Math.hypot(WHEELBASE, TRACKWIDTH);
+        ChassisSpeeds speeds;
+        if (fieldOriented) {
+            speeds = ChassisSpeeds.fromFieldRelativeSpeeds(translation.getX(), translation.getY(), rotation,
+                    Rotation2d.fromDegrees(gyroscope.getAngle().toDegrees()));
+        } else {
+            speeds = new ChassisSpeeds(translation.getX(), translation.getY(), rotation);
+        }
 
-    //     SwerveModuleState[] states = kinematics.toSwerveModuleStates(speeds);
-    //     frontLeftModule.setTargetVelocity(states[0].speedMetersPerSecond, states[0].angle.getRadians());
-    //     frontRightModule.setTargetVelocity(states[1].speedMetersPerSecond, states[1].angle.getRadians());
-    //     backLeftModule.setTargetVelocity(states[2].speedMetersPerSecond, states[2].angle.getRadians());
-    //     backRightModule.setTargetVelocity(states[3].speedMetersPerSecond, states[3].angle.getRadians());
-    // }
+        SwerveModuleState[] states = kinematics.toSwerveModuleStates(speeds);
+        frontLeftModule.setTargetVelocity(states[0].speedMetersPerSecond, states[0].angle.getRadians());
+        frontRightModule.setTargetVelocity(states[1].speedMetersPerSecond, states[1].angle.getRadians());
+        backLeftModule.setTargetVelocity(states[2].speedMetersPerSecond, states[2].angle.getRadians());
+        backRightModule.setTargetVelocity(states[3].speedMetersPerSecond, states[3].angle.getRadians());
+    }
 
-    // public void resetGyroscope() {
-    //     gyroscope.setAdjustmentAngle(gyroscope.getUnadjustedAngle());
-    // }
+    public void resetGyroscope() {
+        gyroscope.setAdjustmentAngle(gyroscope.getUnadjustedAngle());
+    }
 
-    // public double getRealAngle(){
-    //     return gyroscope.getUnadjustedAngle().toDegrees();
-    // }
+    public double getRealAngle(){
+        return gyroscope.getUnadjustedAngle().toDegrees();
+    }
 
-    // @Override
+    @Override
     protected void initDefaultCommand() {
-    //     setDefaultCommand(new DriveCommand());
+        setDefaultCommand(new DriveCommand());
     }
 }

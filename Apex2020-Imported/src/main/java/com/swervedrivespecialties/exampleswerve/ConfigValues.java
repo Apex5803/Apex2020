@@ -2,10 +2,10 @@ package com.swervedrivespecialties.exampleswerve;
 
 public class ConfigValues{
     //TODO PID Tuning
-    public static double Shooter_P = 10;
-    public static double Shooter_I = 0;
-    public static double Shooter_D = 0;
-    public static double Shooter_F = 100;
+    public static double Shooter_P = 1.0;
+    public static double Shooter_I = 0.0;
+    public static double Shooter_D = 14.0;
+    public static double Shooter_F = 0.05;
 
 
 
@@ -28,7 +28,7 @@ public class ConfigValues{
 
     public static double Spinner_Peak_Output = 1;
 
-    public static double Shooter_Test_Speed = 1.00;
+    public static double Shooter_Test_Speed = 5000;
 
     public static int colorWheelRPMS = 30;
 
